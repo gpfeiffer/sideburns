@@ -72,7 +72,6 @@ wt2m:= DiagonalMat(wt2);
 #chg:= diam * botm * isom * wgtm * potm;
 chg:= diam * botm * isom * wt2m * potm * wt1m;
 d:= RightRegularBaseChange(bas.basis, chg);;
-
 new:= chg;
 
 cols:= Concatenation(
@@ -103,3 +102,57 @@ ii:= Concatenation(cols);
 for i in [1..Length(ii)] do
     invo[i][ii[i]]:= 1;
 od;
+
+# marks
+mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;
+
+# original marks
+org0:= m-> [
+  [m[ 1], m[ 2], m[ 3], m[ 4], 0, 0, 0, 0],
+  [m[ 5], m[ 6], m[ 7], m[ 8], 0, 0, 0, 0],
+  [m[ 9], m[10], m[11], m[12], 0, 0, 0, 0],
+  [m[13], m[14], m[15], m[16], 0, 0, 0, 0],
+  [0, 0, 0, 0, m[17], m[18], 0, 0],
+  [0, 0, 0, 0, m[19], m[20], 0, 0],
+  [0, 0, 0, 0, 0, 0, m[21], 0],
+  [0, 0, 0, 0, 0, 0, 0, m[22]],
+];
+
+org:= function(m)
+    local   d,  aaa,  iii,  i;
+    d:= 8;
+    aaa:= NullMat(d, d);
+    iii:= [1..4];
+    for i in iii do
+        aaa[ i]{iii}:= m{(i-1)*4 + iii};
+    od;
+    iii:= [1..2];
+    aaa[ 5]{4+iii}:= m{16+iii};
+    aaa[ 6]{4+iii}:= m{18+iii};
+    aaa[7][7]:= m[21];
+    aaa[8][8]:= m[22];
+    return aaa;
+end;
+
+
+mymarks:= function(m)
+    local   d,  aaa,  iii,  i;
+    d:= 8;
+    aaa:= NullMat(d, d);
+    iii:= [1..4];
+    for i in [1..3] do
+        aaa[ i]{iii}:= m{(i-1)*4 + iii};
+    od;
+    i:= 4;
+    aaa[ 8]{iii}:= m{(i-1)*4 + iii};
+    iii:= [1..2];
+    aaa[ 5]{4+iii}:= m{16+iii};
+    aaa[ 8]{4+iii}:= m{18+iii};
+    aaa[7][7]:= m[21];
+    aaa[4][4]:= m[22];
+    aaa[6][6]:= m[22];
+    aaa[8][8]:= m[22];
+    return aaa;
+end;
+
+
