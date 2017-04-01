@@ -243,11 +243,7 @@ TopClassIncMatSections:= function(G)
         Add(mats, ClassIncMat(N, sec, OnPoints, IsCompSubsection));
     od;
 
-
-    return rec(
-      reps:= Concatenation(secs),
-      mats:= mats
-    );
+    return rec(reps:= secs, mats:= mats);
 end;
 
 
@@ -271,10 +267,7 @@ BotClassIncMatSections:= function(G)
         Add(mats, ClassIncMat(N, sec, OnPoints, IsCompSubsection));
     od;
 
-    return rec(
-      reps:= Concatenation(secs),
-      mats:= mats
-    );
+    return rec(reps:= secs, mats:= mats);
 end;
 
 
@@ -289,38 +282,37 @@ end;
 ##
 IsoClassIncMatSections:= function(G)
     local   secs,  mats,  sec;
+
     secs:= List(SectionsByType(G), x-> x.sections);
     mats:= [];
     for sec in secs do
         Add(mats, ClassIncMat(G, sec, OnPoints, IsDescendantSection));
     od;
 
-    return rec(
-      reps:= Concatenation(secs),
-      mats:= mats
-    );
+    return rec(reps:= secs, mats:= mats);
 end;
 
 
 #############################################################################
 ##
+##  There must be a more efficient way that avoids expanding the block
+##  diagonal matrices ...
 ##
-##
-ProductClassIncMats:= function(G)
-    local   secs,  top,  bot,  iso,  tops,  bots,  isos,  t,  b,  i;
+ProductClassIncMatsSections:= function(G)
+    local   secs,  mat,  classIncMat,  cim,  reps,  poss;
 
     secs:= RepresentativesSections(G);
-    top:= TopClassIncMatSections(G);
-    bot:= BotClassIncMatSections(G);
-    iso:= IsoClassIncMatSections(G);
-    tops:= List(secs, x-> Position(top.reps, x));
-    bots:= List(secs, x-> Position(bot.reps, x));
-    isos:= List(secs, x-> Position(iso.reps, x));
-    t:= DirectSumMat(top.mats);
-    b:= DirectSumMat(bot.mats);
-    i:= DirectSumMat(iso.mats);
+    mat:= IdentityMat(Length(secs));
 
-    return b{bots}{bots} * i{isos}{isos} * t{tops}{tops};
+    for classIncMat in [BotClassIncMatSections,
+            IsoClassIncMatSections, TopClassIncMatSections] do
+        cim:= classIncMat(G);
+        reps:= Concatenation(cim.reps);
+        poss:= List(secs, x-> Position(reps, x));
+        mat:= mat * DirectSumMat(cim.mats){poss}{poss};
+    od;
+
+    return rec(mat:= mat, reps:= secs);
 end;
 
 
