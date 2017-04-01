@@ -230,6 +230,16 @@ IsDescendantTriple:= function(hi, lo)
          and IsSubgroup(hi, lo);
 end;
 
+#############################################################################
+##
+##  IsSubgroupSameU
+##
+IsSubgroupSameU:= function(hi, lo)
+    return IsCompSubsectionSameU(Sections(hi)[1], Sections(lo)[1])
+           and IsCompSubsectionSameU(Sections(hi)[2], Sections(lo)[2])
+           and IsSubgroup(hi, lo);
+end;
+
 ##############################################################################
 ##
 #A  GeneratorsOfGroup( triple )
