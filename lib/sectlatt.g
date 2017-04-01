@@ -152,6 +152,17 @@ IsCompSubsection:= function(hi, lo)
             IsSubgroup(BotSec(hi), BotSec(lo));
 end;
 
+#############################################################################
+##
+##  componentwise, same U: K' = K \cap P' and P'K = P
+##
+IsCompSubsectionSameU:= function(hi, lo)
+    local   P,  K,  P1,  K1;
+    P:=  TopSec(hi);  K:=  BotSec(hi);
+    P1:= TopSec(lo);  K1:= BotSec(lo);
+    return K1 = Intersection(K, P1) and P = ClosureGroup(K, P1);
+end;
+
 
 #############################################################################
 ##
