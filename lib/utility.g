@@ -71,3 +71,39 @@ short:= function(m)
         Print("\n");
     od;
 end;
+
+
+#############################################################################
+##
+##  RowSummingMat
+##
+##  given a partition of [1..n], construct corresponding row summing matrix
+##
+RowSummingMat:= function(parts)
+    local   n,  mat,  i,  j;
+    n:= Maximum(Union(parts));
+    mat:= NullMat(Length(parts), n);
+    for i in [1..Length(parts)] do
+        for j in parts[i] do
+            mat[i][j]:= 1;
+        od;
+    od;
+    return mat;
+end;
+
+#############################################################################
+##
+##  ColPickingMat
+##
+##  given a partition of [1..n], construct corresponding row summing matrix
+##
+ColPickingMat:= function(parts)
+    local   n,  mat,  j;
+    n:= Maximum(Union(parts));
+    mat:= NullMat(n, Length(parts));
+    for j in [1..Length(parts)] do
+        mat[parts[j][1]][j]:= 1;
+    od;
+    return mat;
+end;
+
