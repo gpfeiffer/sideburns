@@ -24,6 +24,26 @@
 
 #############################################################################
 ##
+##  NormalizerIndices
+##
+##  Morally, this should be based on 'NormalizerTriple'.  But computing
+##  normalizers of groups is way faster ...
+##
+NormalizerIndicesDirectProduct:= function(G, H)
+    local   idx,  GxH,  class,  rep,  nor;
+    idx:= [];
+    GxH:= DirectProduct(G, H);
+    for class in ConjugacyClassesSubgroupsDirectProduct(G, H) do
+        rep:= Representative(class);
+        nor:= Normalizer(GxH, rep);
+        Add(idx, Index(nor, rep));
+    od;
+    return idx;
+end;
+
+
+#############################################################################
+##
 ##  TriplesByTop
 ##
 ##  Sort conjugacy classes of subgroups of GxH by top groups of sections.
