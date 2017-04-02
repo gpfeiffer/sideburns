@@ -115,6 +115,7 @@ TopClassIncMatDirectProduct:= function(G, H)
         # special case first
         if Length(sub) = 1 then
             Add(mats, [[1]]);
+            Print(",\c");
         else
             secs:= Sections(sub[1]);
             PP:= List(secs, TopSec);
@@ -128,7 +129,9 @@ TopClassIncMatDirectProduct:= function(G, H)
 
             # align subs to have tops PP
             sub:= List(sub, s-> SubgroupTriple(aligned([G,H], em, PP, s)));
+            Print(":\c");
             Add(mats, ClassIncMat(NN, sub, OnPoints, IsSubgroup));
+            Print("!\n");
         fi;
     od;
 
@@ -193,68 +196,6 @@ end;
 ##
 ##  FIXME: get rid of GxH
 ##
-IsoClassIncMatDirectProduct0:= function(G, H)
-    local   subs,  mats,  GxH,  sub;
-
-    subs:= List(TriplesDirectProduct(G, H), x-> Flat(x.trip));
-    mats:= [];
-    GxH:= DirectProduct(G, H);
-    for sub in subs do
-        Add(mats, ClassIncMat(GxH, sub, OnPoints, IsDescendantTriple));
-    od;
-
-    return rec(
-      reps:= subs,
-      mats:= mats
-    );
-end;
-
-IsoClassIncMatDirectProduct1:= function(G, H)
-    local   subs,  mats,  sub,  trips,  dblcs,  morG,  dblG,  rows,
-            grp,  morH,  dblH,  cols,  mat,  poss,  inverse,  i;
-
-    subs:= TriplesDirectProduct(G, H);
-
-    mats:= [];
-    for sub in subs do
-        trips:= Flat(sub.trip);
-        dblcs:= Flat(List([1..Length(sub.rows)], i-> List([1..Length(sub.cols)], j-> List(sub.dblc[i][j], x-> rec(i:= i,j:= j, dc:= x)))));
-
-
-        ## FIXME: special case rows = cols?
-
-        # the rows correspond to G
-        morG:= Concatenation(List(sub.rows, x-> AllMorphismsSection(x!.section)));
-        dblG:= Flat(List([1..Length(sub.rows)], i-> List(CosetsSection(sub.rows[i]!.section), c-> rec(i:= i, cos:= c))));
-        rows:= List(morG, TripleMorphism);
-        grp:= ProductGroup(rows[1]);
-        rows:= ClassIncMat(grp, rows, OnPoints, IsSubgroup);
-
-        # the cols correspond to H
-        morH:= Concatenation(List(sub.cols, x-> AllMorphismsSection(x!.section)));
-        dblH:= Flat(List([1..Length(sub.cols)], j-> List(CosetsSection(sub.cols[j]!.section), c-> rec(j:= j, cos:= c))));
-        cols:= List(morH, TripleMorphism);
-        grp:= ProductGroup(cols[1]);
-        cols:= ClassIncMat(grp, cols, OnPoints, IsSubgroup);
-
-        # Kronecker product
-        mat:= KroneckerProduct(rows, cols);
-        poss:= Flat(List(dblG, x-> List(dblH, y-> PositionProperty(dblcs, dc-> x.i = dc.i and y.j = dc.j and Representative(x.cos)/Representative(y.cos) in dc.dc))));
-        inverse:= List(Set(poss), x-> []);
-        for i in [1..Length(poss)] do Add(inverse[poss[i]], i); od;
-        mat:= List(inverse, x-> Sum(mat{x}));
-        poss:= List(inverse, x-> x[1]);
-        mat:= List(mat, x-> x{poss});
-
-        Add(mats, mat);
-    od;
-
-    return rec(
-      reps:= List(subs, x-> Flat(x.trip)),
-      mats:= mats
-    );
-end;
-
 IsoClassIncMatDirectProduct:= function(G, H)
     local   subs,  mats,  reps,  sub,  dblcs,  morG,  dblG,  rows,
             morH,  dblH,  cols,  grp,  mat,  poss,  inverse,  i;
@@ -270,14 +211,13 @@ IsoClassIncMatDirectProduct:= function(G, H)
         # the rows correspond to G
         morG:= Concatenation(List(sub.rows, x-> AllMorphismsSection(x!.section)));
         dblG:= Flat(List([1..Length(sub.rows)], i-> List(CosetsSection(sub.rows[i]!.section), c-> rec(i:= i, cos:= c))));
-        rows:= List(morG, TripleMorphism);
+        rows:= List(morG, SubgroupMorphism);
         rows:= ClassIncMat(G, rows, OnPoints, IsSubgroup);
 
         # the cols correspond to H
         morH:= Concatenation(List(sub.cols, x-> AllMorphismsSection(x!.section)));
         dblH:= Flat(List([1..Length(sub.cols)], j-> List(CosetsSection(sub.cols[j]!.section), c-> rec(j:= j, cos:= c))));
-        cols:= List(morH, TripleMorphism);
-        grp:= ProductGroup(cols[1]);
+        cols:= List(morH, SubgroupMorphism);
         cols:= ClassIncMat(H, cols, OnPoints, IsSubgroup);
 
         # Kronecker product
@@ -305,23 +245,22 @@ end;
 ##  diagonal matrices ...
 ##
 TableOfMarksDirectProduct:= function(G, H)
-    local   ccs,  mat,  classIncMat,  cim,  reps,  poss;
+    local   ccs,  idx,  mat,  classIncMat,  cim,  reps,  poss;
 
     ccs:= ConjugacyClassesSubgroupsDirectProduct(G, H);
-    mat:= IdentityMat(Length(ccs));
+    idx:= List(ccs, c-> Index(StabilizerOfExternalSet(c), Representative(c)));
+    mat:= DiagonalMat(idx);
 
     for classIncMat in [BotClassIncMatDirectProduct,
             IsoClassIncMatDirectProduct, TopClassIncMatDirectProduct] do
         cim:= classIncMat(G, H);
-        reps:= Concatenation(cim.reps);
+        reps:= List(Concatenation(cim.reps), SubgroupTriple);
         poss:= List(ccs, x-> PositionProperty(reps, r-> r in x));
         mat:= mat * DirectSumMat(cim.mats){poss}{poss};
     od;
 
     return mat;
 end;
-
-
 
 
 #############################################################################
