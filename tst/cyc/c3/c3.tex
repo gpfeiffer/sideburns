@@ -36,28 +36,46 @@
       \end{tikzpicture}
 \end{center}
 
+\scriptsize
 \begin{align*}
-M &=  \left(\begin{array}{rrrrrr}%
+M &=  
+\left(\begin{array}{rrrrrr}%
+3&.&.&.&.&.\\%
+1&1&.&.&.&.\\%
+1&.&1&.&.&.\\%
+\!\!\!^1\!/\!_3&\!\!\!^1\!/\!_3&\!\!\!^1\!/\!_3&\!\!\!^1\!/\!_3&.&.\\%
+1&.&.&.&1&.\\%
+1&.&.&.&.&1\\%
+\end{array}\right)%
+\cdot 
+\left(\begin{array}{rrrrrr}%
+1&.&.&.&.&.\\%
+.&1&.&.&.&.\\%
+.&.&2&.&.&.\\%
+.&.&.&2&.&.\\%
+.&.&.&.&1&.\\%
+.&.&.&.&.&1\\%
+\end{array}\right)%
+\cdot
+\left(\begin{array}{rrrrrr}%
+1&.&.&.&.&.\\%
+.&1&.&.&.&.\\%
+.&.&1&.&.&.\\%
+.&.&.&1&.&.\\%
+.&.&.&1&1&.\\%
+.&.&.&1&.&1\\%
+\end{array}\right) \\
+M &= 
+\left(\begin{array}{rrrrrr}%
 3&.&.&.&.&.\\%
 1&1&.&.&.&.\\%
 1&.&2&.&.&.\\%
-\frac13&\frac13&\frac23&\frac23&.&.\\%
-1&.&.&1&1&1\\%
-1&.&.&1&1&-1\\%
-\end{array}\right)\text,&
-M^{-1} &= \left(\begin{array}{rrrrrr}%
-\frac13&.&.&.&.&.\\%
--\frac13&1&.&.&.&.\\%
--\frac{1}{6}&.&\frac12&.&.&.\\%
-\frac{1}{6}&-\frac12&-\frac12&\frac32&.&.\\%
--\frac12&\frac12&\frac12&-\frac32&\frac12&\frac12\\%
-.&.&.&.&\frac12&-\frac12\\%
-\end{array}\right)%
-\end{align*}
-
-w/o Fourier
-\begin{align*}
-  M^-1 &=
+\!\!\!^1\!/\!_3&\!\!\!^1\!/\!_3&\!\!\!^2\!/\!_3&\!\!\!^2\!/\!_3&.&.\\%
+1&.&.&1&1&.\\%
+1&.&.&1&.&1\\%
+\end{array}\right)%\\
+\quad
+  M^{-1} =
 \left(\begin{array}{rrrrrr}%
 \frac13&.&.&.&.&.\\%
 -\frac13&1&.&.&.&.\\%
@@ -68,5 +86,51 @@ w/o Fourier
 \end{array}\right)%
 \end{align*}
 
+
+\begin{align*}
+\left(\begin{array}{rrrr}
+3&.&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+\end{array}\right)
+\quad
+\left(\begin{array}{rrrr}
+1&1&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+\end{array}\right)
+\quad
+\frac13\left(\begin{array}{rrrr}
+3&.&.&.\\
+2\cdot3&.&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+\end{array}\right)
+\quad
+\frac13\left(\begin{array}{rrrr}
+1&1&.&.\\
+2\cdot1&2\cdot1&.&.\\
+.&.&.&.\\
+.&.&.&.\\
+\end{array}\right)
+\end{align*}
+
+\begin{align*}
+\left(\begin{array}{rrrr}
+1&.&.&.\\
+.&1&.&.\\
+.&.&1&.\\
+.&.&.&1\\
+\end{array}\right)
+\quad
+\left(\begin{array}{rrrr}
+1&.&.&.\\
+.&1&.&.\\
+.&.&.&1\\
+.&.&1&.\\
+\end{array}\right)
+\end{align*}
 
 \end{document}

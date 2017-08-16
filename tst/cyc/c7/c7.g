@@ -22,9 +22,12 @@ mat:= mat{poss}{poss};
 top:= TopClassIncMatDirectProduct(G, G);
 bot:= BotClassIncMatDirectProduct(G, G);
 iso:= IsoClassIncMatDirectProduct(G, G);
-tops:= List(ccs, x-> PositionProperty(top.reps, r-> r in x));
-bots:= List(ccs, x-> PositionProperty(bot.reps, r-> r in x));
-isos:= List(ccs, x-> PositionProperty(iso.reps, r-> r in x));
+reps:= Concatenation(top.reps);
+tops:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(bot.reps);
+bots:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(iso.reps);
+isos:= List(ccs, x-> PositionProperty(reps, r-> r in x));
 topm:= DirectSumMat(top.mats){tops}{tops};
 botm:= DirectSumMat(bot.mats){bots}{bots};
 isom:= DirectSumMat(iso.mats){isos}{isos};
@@ -87,3 +90,6 @@ for p in [ [5,6] ] do
 od;
 
 e:= RightRegularBaseChange(d, fou);;
+
+# marks
+mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;

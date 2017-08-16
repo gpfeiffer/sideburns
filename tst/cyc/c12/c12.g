@@ -1,5 +1,5 @@
 ##  the group
-n:= 5;
+n:= 12;
 G:=  CyclicGroup(IsPermGroup, n);
 SetName(G, Concatenation("C", String(n)));
 GG:= DirectProduct(G, G);
@@ -63,8 +63,12 @@ c:= RightRegularBaseChange(bas.basis, chg);;
 d:= c;
 
 cols:= Concatenation(
-               List([1..2], i-> i + 2 * [0..1]),
-               List([5..8], i-> [i])
+               List([1..6], i-> i + 6 * [0..5]),
+               List([37..40], i-> i + 4 * [0..3]),
+               List([53..58], i-> i + 6 * [0..2]),
+               List([71..74], i-> i + 4 * [0..1]),
+               List([79..82], i-> i + 4 * [0..1]),
+               List([87..90], i-> [i])
                );
 
 shrink:= chg^0;
@@ -90,6 +94,3 @@ for p in [ [5,6] ] do
 od;
 
 e:= RightRegularBaseChange(d, fou);;
-
-# marks
-mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;
