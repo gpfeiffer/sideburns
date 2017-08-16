@@ -1,6 +1,6 @@
 ##  the group
-G:= SymmetricGroup(3);
-SetName(G, "S3");
+G:=  SymmetricGroup(4);
+SetName(G, "S4");
 GG:= DirectProduct(G, G);
 
 ##  its conjugacy classes of subgroups
@@ -58,104 +58,100 @@ a:= RightRegularBaseChange(bas.basis, chg);;
 chg:= diam * botm * isom * potm;
 b:= RightRegularBaseChange(bas.basis, chg);;
 
-##  this is the number of G-conjugates of (P_1,K_1) -> U:
-##  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
+###  this is the number of G-conjugates of (P_1,K_1) -> U:
+###  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
+
 wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
            * Size(Conjugators(OneMorphismSection(x))));
 
-wt1m:= DiagonalMat(wt1/Size(G));
+wt1m:= DiagonalMat(wt1);
 
-## this is |Aut(P_1)| / |Aut(P_1/K_1)|
+### this is |Aut(P_1)| / |Aut(P_1/K_1)|
 wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
            / Size(AutomorphismGroup(AsGroup(x))));
 
-wt2m:= DiagonalMat(wt2);
+wt2m:= DiagonalMat(wt2/Size(G));
 
-
-#chg:= diam * botm * isom * wgtm * potm;
 chg:= diam * botm * isom * wt2m * potm * wt1m;
-d:= RightRegularBaseChange(bas.basis, chg);;
-new:= chg;
+c:= RightRegularBaseChange(bas.basis, chg);;
+
+max:= chg^0;;
+x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
+for p in List([199..209], i -> i + 11 * [0..2]) do
+    max{p}{p}:= x;
+od;
+
+max1:= chg^0;;
+x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
+for p in List([0..10], i -> 11*i + [129..131]) do
+    max1{p}{p}:= -2*x;
+od;
+
+d:= RightRegularBaseChange(c, max1^-1);;
+
+max1a:= chg^0;;
+x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
+for p in List([0..10], i -> 11*i + [125..127]) do
+    max1a{p}{p}:= x;
+od;
+
+dix1a:= chg^0;;
+x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
+for p in Concatenation(List([0..10], i -> 11*i + [125..127])) do
+    dix1a[p][p]:= -3;
+od;
+
+min:= chg^0;;
+one:= [1..121];
+two:= [122..242];
+kl4:= [248..266];
+dih:= [271..272];
+min{kl4}{two}:= tap{kl4}{two};; # 2 in V4
+min{dih}{kl4}:= tap{dih}{kl4};; # V4 in D8
+min{dih}{two}:= tap{dih}{two};; # 2 in D8
+min{dih}{one}:= tap{dih}{one};; # 1 in D8
+
+
+e:= RightRegularBaseChange(d, min);;
+
+new:= chg / max1 * min;
 
 cols:= Concatenation(
-               List([1..4], i-> i + 4 * [0..3]),
-               List([17..18], i-> i + 2 * [0..1]),
-               List([21..22], i-> [i])
+               List([1..11], i-> i + 11 * [0..10]),
+               List([122..132], i-> i + 11 * [0..10]),
+               [[243,245],[244,246]],
+               [[247]],
+               [[248,251,257],
+                [258,252,249],
+                [259,253,249],
+                [260,253,249],
+                [261,254,250],
+                [262,255,250],
+                [263,255,250],
+                [264,256,250],
+                [265,256,250],
+                [266,254,250],
+                ],
+               #### ??? ####
+               [[267,269],[268,270]],
+               [[271],[272]],
+               [[273]],
+               [[274]]
                );
 
-shrink:= chg^0;
+shrink:= chg^0;;
 for col in cols do
     i:= col[1];
     for j in col{[2..Length(col)]} do
         shrink[j][i]:= -1;
     od;
 od;
-shrink1:= shrink^-1;
+shrink1:= shrink^-1;;
 
-firsts:= List(cols, x-> x[1]);
-seconds:= Difference([1..Length(chg)], firsts);
-poss:= Concatenation(firsts, seconds);
+firsts:= List(cols, x-> x[1]);;
+seconds:= Difference([1..Length(chg)], firsts);;
+poss:= Concatenation(firsts, seconds);;
 
 f:= List(d, x-> x^shrink1);;
 m:= List(f, x-> x{firsts}{firsts});;
 h:= List(f, x-> x{seconds}{firsts});;
-
-invo:= 0 * chg;
-ii:= Concatenation(cols);
-for i in [1..Length(ii)] do
-    invo[i][ii[i]]:= 1;
-od;
-
-# marks
-mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;
-
-# original marks
-org0:= m-> [
-  [m[ 1], m[ 2], m[ 3], m[ 4], 0, 0, 0, 0],
-  [m[ 5], m[ 6], m[ 7], m[ 8], 0, 0, 0, 0],
-  [m[ 9], m[10], m[11], m[12], 0, 0, 0, 0],
-  [m[13], m[14], m[15], m[16], 0, 0, 0, 0],
-  [0, 0, 0, 0, m[17], m[18], 0, 0],
-  [0, 0, 0, 0, m[19], m[20], 0, 0],
-  [0, 0, 0, 0, 0, 0, m[21], 0],
-  [0, 0, 0, 0, 0, 0, 0, m[22]],
-];
-
-org:= function(m)
-    local   d,  aaa,  iii,  i;
-    d:= 8;
-    aaa:= NullMat(d, d);
-    iii:= [1..4];
-    for i in iii do
-        aaa[ i]{iii}:= m{(i-1)*4 + iii};
-    od;
-    iii:= [1..2];
-    aaa[ 5]{4+iii}:= m{16+iii};
-    aaa[ 6]{4+iii}:= m{18+iii};
-    aaa[7][7]:= m[21];
-    aaa[8][8]:= m[22];
-    return aaa;
-end;
-
-
-mymarks:= function(m)
-    local   d,  aaa,  iii,  i;
-    d:= 8;
-    aaa:= NullMat(d, d);
-    iii:= [1..4];
-    for i in [1..3] do
-        aaa[ i]{iii}:= m{(i-1)*4 + iii};
-    od;
-    i:= 4;
-    aaa[ 8]{iii}:= m{(i-1)*4 + iii};
-    iii:= [1..2];
-    aaa[ 5]{4+iii}:= m{16+iii};
-    aaa[ 8]{4+iii}:= m{18+iii};
-    aaa[7][7]:= m[21];
-    aaa[4][4]:= m[22];
-    aaa[6][6]:= m[22];
-    aaa[8][8]:= m[22];
-    return aaa;
-end;
-
-
