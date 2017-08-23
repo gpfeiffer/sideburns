@@ -92,3 +92,6 @@ for p in [ [5,6] ] do
 od;
 
 e:= RightRegularBaseChange(d, fou);;
+
+# marks
+mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;

@@ -1,6 +1,6 @@
 ##  the group
-G:=  SymmetricGroup(4);
-SetName(G, "S4");
+G:=  DihedralGroup(IsPermGroup, 14);
+SetName(G, "D14");
 GG:= DirectProduct(G, G);
 
 ##  its conjugacy classes of subgroups
@@ -21,12 +21,9 @@ mat:= mat{poss}{poss};
 top:= TopClassIncMatDirectProduct(G, G);
 bot:= BotClassIncMatDirectProduct(G, G);
 iso:= IsoClassIncMatDirectProduct(G, G);
-reps:= Concatenation(top.reps);
-tops:= List(ccs, x-> PositionProperty(reps, r-> r in x));
-reps:= Concatenation(bot.reps);
-bots:= List(ccs, x-> PositionProperty(reps, r-> r in x));
-reps:= Concatenation(iso.reps);
-isos:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+tops:= List(ccs, x-> PositionProperty(top.reps, r-> r in x));
+bots:= List(ccs, x-> PositionProperty(bot.reps, r-> r in x));
+isos:= List(ccs, x-> PositionProperty(iso.reps, r-> r in x));
 topm:= DirectSumMat(top.mats){tops}{tops};
 botm:= DirectSumMat(bot.mats){bots}{bots};
 isom:= DirectSumMat(iso.mats){isos}{isos};
@@ -39,10 +36,10 @@ tomm:= diam * botm * isom * topm;
 ll:= List(ccs, Size);
 N:= Length(mat);
 tap:= List([1..N], i-> List([1..N], j-> topm[i][j] * ll[j] / ll[i]));
-tap:= TransposedMat(tap);
+tap:= TransposedMat(tap);;
 
 # ... and neutralize noncyclic part:
-potm:= MutableCopyMat(tap);
+potm:= MutableCopyMat(tap);;
 for i in [1..N] do
     if not IsCyclic(AsGroup(Sections(trips[i])[1])) then
         potm[i]{[1..i-1]}:= 0*[1..i-1];
@@ -52,92 +49,89 @@ od;
 # Burnside
 bas:= BasisDoubleBurnsideRing(G);
 
-chg:= diam * botm * isom;
+chg:= diam * botm * isom;;
 a:= RightRegularBaseChange(bas.basis, chg);;
 
-chg:= diam * botm * isom * potm;
+chg:= diam * botm * isom * potm;;
 b:= RightRegularBaseChange(bas.basis, chg);;
 
 ###  this is the number of G-conjugates of (P_1,K_1) -> U:
 ###  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
-
 wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
            * Size(Conjugators(OneMorphismSection(x))));
 
-wt1m:= DiagonalMat(wt1);
+wt1m:= DiagonalMat(wt1/Size(G));
 
 ### this is |Aut(P_1)| / |Aut(P_1/K_1)|
 wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
            / Size(AutomorphismGroup(AsGroup(x))));
 
-wt2m:= DiagonalMat(wt2/Size(G));
+wt2m:= DiagonalMat(wt2);
 
-chg:= diam * botm * isom * wt2m * potm * wt1m;
+chg:= diam * botm * isom * wt2m * potm * wt1m;;
 c:= RightRegularBaseChange(bas.basis, chg);;
 
-max:= chg^0;;
-x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
-for p in List([199..209], i -> i + 11 * [0..2]) do
-    max{p}{p}:= x;
-od;
 
-max1:= chg^0;;
-x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
-for p in List([0..10], i -> 11*i + [129..131]) do
-    max1{p}{p}:= -2*x;
-od;
+e:= c;
 
-d:= RightRegularBaseChange(c, max1^-1);;
+new:= chg;
 
-max1a:= chg^0;;
-x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
-for p in List([0..10], i -> 11*i + [125..127]) do
-    max1a{p}{p}:= x;
-od;
-
-dix1a:= chg^0;;
-x:= [[-1,1,1],[1,-1,1],[1,1,-1]];
-for p in Concatenation(List([0..10], i -> 11*i + [125..127])) do
-    dix1a[p][p]:= -3;
-od;
-
-min:= chg^0;;
-one:= [1..121];
-two:= [122..242];
-kl4:= [248..266];
-dih:= [271..272];
-min{kl4}{two}:= tap{kl4}{two};; # 2 in V4
-min{dih}{kl4}:= tap{dih}{kl4};; # V4 in D8
-min{dih}{two}:= tap{dih}{two};; # 2 in D8
-min{dih}{one}:= tap{dih}{one};; # 1 in D8
+fous3:= [
+ [ 1,  1,  1,  1,  1,  1 ]/6,
+ [ 1, -1,  0,  1, -1,  0 ]/3,
+ [ 0,  1, -1,  0,  1, -1 ]/3,
+ [ 0,  0,  1,  1, -1, -1 ]/3,
+ [ 1,  1, -1, -1,  0,  0 ]/3,
+ [ 1, -1,  1, -1,  1, -1 ]/6,
+];
 
 
-e:= RightRegularBaseChange(d, min);;
+fou2:= [
+  [ 1,  1 ]/2,
+  [ 1, -1 ]/2,
+];
 
-new:= chg / max1 * min;
+
+#dia2:= List([1..Length(chg)], x-> 1);
+#for i in [249, 255, 261, 267, 254, 260, 266, 272] do
+#    dia2[i]:= 1/6;
+#od;
+#for i in [250,251,252,253,256,257,258,259,262,263,264,265,268,269,270,271] do
+#    dia2[i]:= 1/3;
+#od;
+#dia2[283]:= 1/2;
+#dia2[284]:= 1/2;
+#di2:= DiagonalMat(dia2);;
+#
+#e:= RightRegularBaseChange(c, (di2 * fou * min * max)^-1);;
+#
+#fin:= chg^0;
+#for iii in List([1..12], i-> 12*i + [98,100]) do
+#    fin{iii}{iii}:= fou2;
+#od;
+#e:= RightRegularBaseChange(e, fin);;
+#
+#
+#dia:= chg^0;
+#for i in [6,12,18,24,30,36,39,42,45,51,53] do
+#    dia[i][i]:= 3;
+#od;
+#
+#e:= RightRegularBaseChange(d, dia^-1);;
+#
+#fin:= chg^0;
+#fin{[57,58,59]}[53]:= -[1,1,1];
+#
+#e:= RightRegularBaseChange(e, fin^-1);;
+#
+#new:= chg / min / dia / fin;
+
+e:= c;
 
 cols:= Concatenation(
-               List([1..11], i-> i + 11 * [0..10]),
-               List([122..132], i-> i + 11 * [0..10]),
-               [[243,245],[244,246]],
-               [[247]],
-#               [[248,251,257],
-#                [258,252,249],
-#                [259,253,249],
-#                [260,253,249],
-#                [261,254,250],
-#                [262,255,250],
-#                [263,255,250],
-#                [264,256,250],
-#                [265,256,250],
-#                [266,254,250],
-#                ],
-               #### ??? ####
-               List([248..266], i-> [i]),
-               [[267,269],[268,270]],
-               [[271],[272]],
-               [[273]],
-               [[274]]
+               List([1..4], i-> i + 4 * [0..3]), #1
+               List([17..18], i-> i + 2 * [0..1]), #2
+               List([21..26], i-> [i])
                );
 
 shrink:= chg^0;;
@@ -153,7 +147,6 @@ firsts:= List(cols, x-> x[1]);;
 seconds:= Difference([1..Length(chg)], firsts);;
 poss:= Concatenation(firsts, seconds);;
 
-## WARNING: this is broken:
-f:= List(d, x-> x^shrink1);;
+f:= List(e, x-> x^shrink1);;
 m:= List(f, x-> x{firsts}{firsts});;
 h:= List(f, x-> x{seconds}{firsts});;

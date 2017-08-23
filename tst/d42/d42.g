@@ -1,7 +1,6 @@
 ##  the group
-n:= 3;
-G:=  CyclicGroup(IsPermGroup, n);
-SetName(G, Concatenation("C", String(n)));
+G:=  DihedralGroup(IsPermGroup, 42);
+SetName(G, "D42");
 GG:= DirectProduct(G, G);
 
 ##  its conjugacy classes of subgroups
@@ -22,12 +21,9 @@ mat:= mat{poss}{poss};
 top:= TopClassIncMatDirectProduct(G, G);
 bot:= BotClassIncMatDirectProduct(G, G);
 iso:= IsoClassIncMatDirectProduct(G, G);
-reps:= Concatenation(top.reps);
-tops:= List(ccs, x-> PositionProperty(reps, r-> r in x));
-reps:= Concatenation(bot.reps);
-bots:= List(ccs, x-> PositionProperty(reps, r-> r in x));
-reps:= Concatenation(iso.reps);
-isos:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+tops:= List(ccs, x-> PositionProperty(top.reps, r-> r in x));
+bots:= List(ccs, x-> PositionProperty(bot.reps, r-> r in x));
+isos:= List(ccs, x-> PositionProperty(iso.reps, r-> r in x));
 topm:= DirectSumMat(top.mats){tops}{tops};
 botm:= DirectSumMat(bot.mats){bots}{bots};
 isom:= DirectSumMat(iso.mats){isos}{isos};
@@ -51,23 +47,62 @@ a:= RightRegularBaseChange(bas.basis, chg);;
 chg:= diam * botm * isom * potm;
 b:= RightRegularBaseChange(bas.basis, chg);;
 
-# this is |Aut(P_1)| / |Aut(P_1/K_1)|
+###  this is the number of G-conjugates of (P_1,K_1) -> U:
+###  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
+wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
+           * Size(Conjugators(OneMorphismSection(x))));
+
+wt1m:= DiagonalMat(wt1/Size(G));
+
+### this is |Aut(P_1)| / |Aut(P_1/K_1)|
 wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
            / Size(AutomorphismGroup(AsGroup(x))));
 
-wt2m:= DiagonalMat(wt2/Size(G));
+wt2m:= DiagonalMat(wt2);
 
-chg:= diam * botm * isom * wt2m * potm;;
+chg:= diam * botm * isom * wt2m * potm * wt1m;
 c:= RightRegularBaseChange(bas.basis, chg);;
+#
+## this has to do with the radical
+min:= chg^0;
+min[85]{[28,70]}:= [1,1];
+min[86]{[32,72]}:= [1,1];
+min[87]{[60,78]}:= [1,1];
+min[88]{[64,80]}:= [1,1];
 
-d:= c;
+min[101]{[46,75]}:= [1,1];
+min[102]{[46,75]}:= [1,1];
+min[103]{[46,75]}:= [1,1];
+min[104]{[48,76]}:= [1,1];
+min[105]{[48,76]}:= [1,1];
+min[106]{[48,76]}:= [1,1];
+min[107]{[62,79]}:= [1,1];
+min[108]{[62,79]}:= [1,1];
+min[109]{[62,79]}:= [1,1];
+min[110]{[64,80]}:= [1,1];
+min[111]{[64,80]}:= [1,1];
+min[112]{[64,80]}:= [1,1];
 
-cols:= [
-        [1,3],
-        [2,4],
-        [5],
-        [6],
-        ];
+min[119]{[64,80,88,110]}:= [1,1,1,1];
+min[120]{[64,80,88,111]}:= [1,1,1,1];
+min[121]{[64,80,88,112]}:= [1,1,1,1];
+min[122]{[64,80,88,112]}:= [1,1,1,1];
+min[123]{[64,80,88,111]}:= [1,1,1,1];
+min[124]{[64,80,88,110]}:= [1,1,1,1];
+
+d:= RightRegularBaseChange(c, min^-1);;
+
+new:= chg / min;
+
+cols:= Concatenation(
+               List([1..8], i-> i + 8 * [0..7]),
+               List([65..68], i-> i + 4 * [0..3]),
+               List([81..82], i-> i + 2 * [0..1]),
+               List([85..86], i-> i + 2 * [0..1]),
+               List([89..94], i-> i + 6 * [0..1]),
+               List([101..106], i-> i + 6 * [0..1]),
+               List([113..124], i-> [i])
+               );
 
 shrink:= chg^0;
 for col in cols do
@@ -86,12 +121,3 @@ f:= List(d, x-> x^shrink1);;
 m:= List(f, x-> x{firsts}{firsts});;
 h:= List(f, x-> x{seconds}{firsts});;
 
-fou:= chg^0;
-for p in [ [5,6] ] do
-    fou{p}{p}:= [[1,1],[1,-1]];
-od;
-
-e:= RightRegularBaseChange(d, fou);;
-
-# marks
-mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;

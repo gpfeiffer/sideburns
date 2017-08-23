@@ -59,6 +59,16 @@
       \end{tikzpicture}
 \end{center}
 
+Idempotents:
+\begin{align*}
+  e_1 &= \tfrac16 b_1 \\
+  e_6 &= \tfrac12 b_1 - b_2 - b_5 + 2 b_6 \\
+e_{11} &= \tfrac1{12} b_1 - \tfrac14 b_3 - \tfrac14 b_9 + \tfrac34 b_{11} \\
+e_{17} &= -b_1 + b_2 + b_5 - 2 b_6 + b_{17} = b_{17} - e_6 - 3 e_1 \\
+e_{21} &= -\tfrac14 b_1 + \tfrac14 b_3 + \tfrac14 b_9 - \tfrac34 b_{11} + \tfrac12 b_{21} = \tfrac12 b_{21} - e_{11} - e_1 \\
+e_{22} &= \tfrac12 b_1 - b_{17} - \tfrac12 b_{21} + b_{22}
+\end{align*}
+
 Projective Resolutions:
 \begin{align*}
 P(1) \oplus P(2) \to P(S_3) \to P(1)  & \to S(1) \\
