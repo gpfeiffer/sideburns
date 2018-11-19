@@ -21,9 +21,12 @@ mat:= mat{poss}{poss};
 top:= TopClassIncMatDirectProduct(G, G);
 bot:= BotClassIncMatDirectProduct(G, G);
 iso:= IsoClassIncMatDirectProduct(G, G);
-tops:= List(ccs, x-> PositionProperty(top.reps, r-> r in x));
-bots:= List(ccs, x-> PositionProperty(bot.reps, r-> r in x));
-isos:= List(ccs, x-> PositionProperty(iso.reps, r-> r in x));
+reps:= Concatenation(top.reps);
+tops:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(bot.reps);
+bots:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(iso.reps);
+isos:= List(ccs, x-> PositionProperty(reps, r-> r in x));
 topm:= DirectSumMat(top.mats){tops}{tops};
 botm:= DirectSumMat(bot.mats){bots}{bots};
 isom:= DirectSumMat(iso.mats){isos}{isos};
@@ -52,9 +55,6 @@ bas:= BasisDoubleBurnsideRing(G);
 chg:= diam * botm * isom;
 a:= RightRegularBaseChange(bas.basis, chg);;
 
-chg:= diam * botm * isom * potm;
-b:= RightRegularBaseChange(bas.basis, chg);;
-
 ###  this is the number of G-conjugates of (P_1,K_1) -> U:
 ###  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
 wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
@@ -68,8 +68,14 @@ wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
 
 wt2m:= DiagonalMat(wt2);
 
-chg:= diam * botm * isom * wt2m * potm * wt1m;;
+chg:= diam * botm * isom * wt2m;;
+b:= RightRegularBaseChange(bas.basis, chg);;
+
+chg:= diam * botm * isom * wt2m * potm;;
 c:= RightRegularBaseChange(bas.basis, chg);;
+
+chg:= diam * botm * isom * wt2m * potm * wt1m;;
+d:= RightRegularBaseChange(bas.basis, chg);;
 
 # some columns (with P = D18) need to be tripled ...
 dia:= chg^0;;
@@ -77,17 +83,13 @@ for i in [6,12,18,24,30,36,39,42,45,51,53] do
     dia[i][i]:= 3;
 od;
 
-d:= RightRegularBaseChange(c, dia^-1);;
+dd:= RightRegularBaseChange(d, dia^-1);;
 
 # reinstate potm between D18 and S3, 2, 1!
 fin:= chg^0;;
 fin{[57,58,59]}[53]:= [1,1,1];
 
-e:= RightRegularBaseChange(d, fin);;
-
-f:= List(e, x-> x^shrink1);;
-m:= List(f, x-> x{firsts}{firsts});;
-h:= List(f, x-> x{seconds}{firsts});;
+e:= RightRegularBaseChange(dd, fin);;
 
 new:= chg / dia * fin;
 
@@ -112,6 +114,7 @@ firsts:= List(cols, x-> x[1]);
 seconds:= Difference([1..Length(chg)], firsts);
 poss:= Concatenation(firsts, seconds);
 
-f:= List(e, x-> x^shrink1);;
+z:= a;;
+f:= List(z, x-> x^shrink1);;
 m:= List(f, x-> x{firsts}{firsts});;
 h:= List(f, x-> x{seconds}{firsts});;

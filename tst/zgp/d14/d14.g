@@ -21,9 +21,12 @@ mat:= mat{poss}{poss};
 top:= TopClassIncMatDirectProduct(G, G);
 bot:= BotClassIncMatDirectProduct(G, G);
 iso:= IsoClassIncMatDirectProduct(G, G);
-tops:= List(ccs, x-> PositionProperty(top.reps, r-> r in x));
-bots:= List(ccs, x-> PositionProperty(bot.reps, r-> r in x));
-isos:= List(ccs, x-> PositionProperty(iso.reps, r-> r in x));
+reps:= Concatenation(top.reps);
+tops:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(bot.reps);
+bots:= List(ccs, x-> PositionProperty(reps, r-> r in x));
+reps:= Concatenation(iso.reps);
+isos:= List(ccs, x-> PositionProperty(reps, r-> r in x));
 topm:= DirectSumMat(top.mats){tops}{tops};
 botm:= DirectSumMat(bot.mats){bots}{bots};
 isom:= DirectSumMat(iso.mats){isos}{isos};
@@ -52,9 +55,6 @@ bas:= BasisDoubleBurnsideRing(G);
 chg:= diam * botm * isom;;
 a:= RightRegularBaseChange(bas.basis, chg);;
 
-chg:= diam * botm * isom * potm;;
-b:= RightRegularBaseChange(bas.basis, chg);;
-
 ###  this is the number of G-conjugates of (P_1,K_1) -> U:
 ###  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
 wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
@@ -68,65 +68,16 @@ wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
 
 wt2m:= DiagonalMat(wt2);
 
-chg:= diam * botm * isom * wt2m * potm * wt1m;;
+chg:= diam * botm * isom * wt2m;;
+b:= RightRegularBaseChange(bas.basis, chg);;
+
+chg:= diam * botm * isom * wt2m * potm;;
 c:= RightRegularBaseChange(bas.basis, chg);;
 
-
-e:= c;
+chg:= diam * botm * isom * wt2m * potm * wt1m;;
+d:= RightRegularBaseChange(bas.basis, chg);;
 
 new:= chg;
-
-fous3:= [
- [ 1,  1,  1,  1,  1,  1 ]/6,
- [ 1, -1,  0,  1, -1,  0 ]/3,
- [ 0,  1, -1,  0,  1, -1 ]/3,
- [ 0,  0,  1,  1, -1, -1 ]/3,
- [ 1,  1, -1, -1,  0,  0 ]/3,
- [ 1, -1,  1, -1,  1, -1 ]/6,
-];
-
-
-fou2:= [
-  [ 1,  1 ]/2,
-  [ 1, -1 ]/2,
-];
-
-
-#dia2:= List([1..Length(chg)], x-> 1);
-#for i in [249, 255, 261, 267, 254, 260, 266, 272] do
-#    dia2[i]:= 1/6;
-#od;
-#for i in [250,251,252,253,256,257,258,259,262,263,264,265,268,269,270,271] do
-#    dia2[i]:= 1/3;
-#od;
-#dia2[283]:= 1/2;
-#dia2[284]:= 1/2;
-#di2:= DiagonalMat(dia2);;
-#
-#e:= RightRegularBaseChange(c, (di2 * fou * min * max)^-1);;
-#
-#fin:= chg^0;
-#for iii in List([1..12], i-> 12*i + [98,100]) do
-#    fin{iii}{iii}:= fou2;
-#od;
-#e:= RightRegularBaseChange(e, fin);;
-#
-#
-#dia:= chg^0;
-#for i in [6,12,18,24,30,36,39,42,45,51,53] do
-#    dia[i][i]:= 3;
-#od;
-#
-#e:= RightRegularBaseChange(d, dia^-1);;
-#
-#fin:= chg^0;
-#fin{[57,58,59]}[53]:= -[1,1,1];
-#
-#e:= RightRegularBaseChange(e, fin^-1);;
-#
-#new:= chg / min / dia / fin;
-
-e:= c;
 
 cols:= Concatenation(
                List([1..4], i-> i + 4 * [0..3]), #1
@@ -147,6 +98,17 @@ firsts:= List(cols, x-> x[1]);;
 seconds:= Difference([1..Length(chg)], firsts);;
 poss:= Concatenation(firsts, seconds);;
 
-f:= List(e, x-> x^shrink1);;
+z:= c;
+
+f:= List(z, x-> x^shrink1);;
 m:= List(f, x-> x{firsts}{firsts});;
 h:= List(f, x-> x{seconds}{firsts});;
+
+fou3:= List([0..2], i-> List([0..2], j-> E(3)^(i*j)));
+
+fou:= chg^0;
+for p in [ [21,22,23], [24,25,26] ] do
+    fou{p}{p}:= fou3;
+od;
+
+e:= RightRegularBaseChange(d, fou);;

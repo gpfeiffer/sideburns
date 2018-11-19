@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{amsart}
 
-\usepackage[a4paper,margin=1in,landscape]{geometry}
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage[euler-digits]{eulervm}
 \usepackage{tikz}
 \usetikzlibrary{calc}
@@ -66,7 +66,7 @@
 &
   \begin{array}{cc}
 21&22\\
-23&21\\
+22&21\\
   \end{array}
 &\\\hline
 % U = D_{10}
@@ -172,9 +172,9 @@ Cartan Mat:
     1,1 \\ \hline
     2,1 \\ \hline
     5,1 \\
-    5,\omega \\ \hline
+    5,\epsilon \\ \hline
     G,1 \\
-    G,\omega \\
+    G,\epsilon \\
   \end{array}
   \left(
   \begin{array}{c|c|cc|cc}
@@ -210,4 +210,78 @@ Cartan Mat:
 \right)
 \end{align*}
 
+
+\section*{Morphism Classes.}
+
+\newcommand{\Aut}{\mathsf{Aut}}
+
+\begin{align*}
+  \begin{array}{cr}
+    \theta\colon U \to P/K & |\theta^G| = |G : N_G(P, K) | \cdot |\Aut_{\theta}(U)| \\ \hline
+    1 \to 1/1 & 1 \cdot 1 = 1 \\ \hline
+    1 \to 2/2 & 5 \cdot 1 = 5 \\
+    2 \to 2/1 & 5 \cdot 1 = 5\\ \hline
+    1 \to 5/5 & 1 \cdot 1 = 1 \\
+    5 \to 5/1 & 1 \cdot 2 = 2 \\
+    5 \to 5/1' & 1 \cdot 2 = 2 \\ \hline
+    1 \to G/G & 1 \cdot 1 = 1 \\
+    2 \to G/5 & 1 \cdot 1 = 1\\
+    G \to G/1 & 1 \cdot 10  = 10\\
+    G \to G/1' & 1 \cdot 10 = 10
+  \end{array}
+\end{align*}
+
+\section*{Matrix action.}
+
+
+\begin{align*}
+\begin{array}{ccc}
+  M&|\theta^G|&\lambda\\\hline
+  1/1 \to P/P \colon \left\{
+                \begin{array}{c}
+                  1/1 \mapsto 1 \cdot P/P 
+                \end{array}\right.
+                & 1 & 1 \\ \hline
+  2/2 \to P/P \colon \left\{
+                \begin{array}{c}
+                  2/2 \mapsto 5 \cdot P/P \\
+                  2/1 \mapsto 5 \cdot P/P
+                \end{array} \right.
+              & \begin{array}{c} 5 \\ 5 \end{array}
+              & \begin{array}{c} 1 \\ 1 \end{array}
+\\
+  2/1 \to P/K \colon \left\{
+                \begin{array}{c}
+                  2/2 \mapsto 5 \cdot P/P \\
+                  2/1 \mapsto 5 \cdot P/K
+                \end{array}\right.
+              & \begin{array}{c} 5 \\ 5 \end{array}
+              & \begin{array}{c} 1 \\ 1 \end{array}
+\\ \hline
+  5/5 \to P/P \colon \left\{
+                \begin{array}{c}
+                  5/5 \mapsto 4 \cdot P/P \\
+                  5/1,\alpha \mapsto 2 \cdot P/P
+                \end{array} \right.
+              & \begin{array}{c} 1 \\ 2 \end{array}
+              & \begin{array}{c} 4 \\ 1 \end{array}
+\\
+  5/1 \to P/K \colon \left\{
+                \begin{array}{c}
+                  5/5 \mapsto 2 \cdot P/P \\
+                  5/1,\alpha \mapsto 2 \cdot P/K
+                \end{array}\right.
+              & \begin{array}{c} 1 \\ 2 \end{array}
+              & \begin{array}{c} 1 \\ 1 \end{array}
+\\ 
+  5/1 \stackrel{\epsilon}{\to} P/K \colon \left\{
+                \begin{array}{c}
+                  5/5 \mapsto 2 \cdot P/P \\
+                  5/1 \mapsto 2 \cdot P/K
+                \end{array}\right.
+              & \begin{array}{c} 1 \\ 2 \end{array}
+              & \begin{array}{c} 1 \\ 1 \end{array}
+\\ \hline
+\end{array}
+\end{align*}
 \end{document}
