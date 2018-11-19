@@ -1,0 +1,149 @@
+\documentclass[12pt,a4paper]{amsart}
+
+\title{$7:3$}
+
+\usepackage[euler-digits]{eulervm}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}\usetikzlibrary{calc}
+
+\begin{document}
+\maketitle
+
+\begin{tikzpicture}%[overlay,scale=0.1]
+  \node (1) at (0,0) {$1$};
+  \node (3) at (2,0) {$3$};
+  \node (3') at (3,0) {$3,\epsilon$};
+  \node (7) at (0,2) {$7$};
+  \node (7') at (1,2) {$7,\epsilon$};
+  \node (73) at (2,2){$7{:}3$};
+  \node (73') at (3,2){$7{:}3,\epsilon$};
+  \foreach \a/\b in {1/73,3/73,3'/73}
+    \draw (\a) -- (\b);
+\end{tikzpicture}
+
+\begin{align*}
+\begin{array}{r}%
+1/1 \\%
+3/3\\%
+7/7\\%
+7{:}3/7{:}3\\%
+\end{array}%
+\left(\begin{array}{r|r|r|r}%
+1&2&3&4\\\hline%
+5&6&7&8\\\hline%
+9&10&11&12\\\hline%
+13&14&15&16\\%
+\end{array}\right)%
+\begin{array}{r}%
+3/1 \\%
+\\%
+7{:}3/7\\%
+\\%
+\end{array}%
+\left(\begin{array}{rr|rr}%
+17&18&19&20\\%
+18&17&20&19\\\hline%
+21&22&23&24\\%
+22&21&24&23\\%
+\end{array}\right)%
+\begin{array}{r}%
+7/1 \\%
+\\%
+\end{array}%
+\left(\begin{array}{rr}%
+25&26\\%
+26&25\\%
+\end{array}\right)%
+\begin{array}{r}%
+7{:}3/1\\%
+\\%
+\end{array}%
+\left(\begin{array}{rr}%
+27&28\\%
+28&27\\%
+\end{array}\right)%
+\end{align*}
+
+\begin{align*}
+  \begin{array}{c|c|c|c}
+\begin{array}{r|r|r|r}%
+1&2&3&4\\\hline%
+5&6&7&8\\\hline%
+9&10&11&12\\\hline%
+  &  &  &^{27}_{28}
+\end{array}
+&&&\\\hline
+&
+\begin{array}{rr|rr}%
+17&18&19&20\\%
+18&17&20&19\\\hline%
+  &  &^{27}_{28}&  \\%
+  &  &  &^{27}_{28}\\%
+\end{array}
+&&\\\hline
+&&
+\begin{array}{rr}%
+25&26\\%
+26&25\\%
+\end{array}
+&\\\hline
+\begin{array}{r|r|r|r}%
+13&14&15&16\\%
+13&14&15&16\\%
+\end{array}
+&
+\begin{array}{rr|rr}%
+21&22&23&24\\%
+21&22&23&24\\%
+\end{array}
+&&
+\begin{array}{rr}%
+27&28\\%
+28&27\\%
+\end{array}
+\\
+\end{array}
+\end{align*}
+
+\begin{align*}
+  \begin{array}{c|c|c|c}
+\begin{array}{r|r|r|r}%
+1&2&3&4\\\hline%
+5&6&7&8\\\hline%
+9&10&11&12\\\hline%
+  &  &  &27\\%
+\end{array}
+&&&\\\hline
+&
+\begin{array}{rr|rr}%
+17&  &19&  \\%
+  &18&  &20\\\hline%
+  &  &27&  \\%
+  &  &  &27\\%
+\end{array}
+&&\\\hline
+&&
+\begin{array}{rr}%
+25&  \\%
+  &26\\%
+\end{array}
+&\\\hline
+\begin{array}{r|r|r|r}%
+13&14&15&16\\%
+  &  &  &  \\%
+\end{array}
+&
+\begin{array}{rr|rr}%
+21&22&23&24\\%
+  &  &  &  \\%
+\end{array}
+&&
+\begin{array}{rr}%
+27&  \\%
+  &28\\%
+\end{array}
+\\
+\end{array}
+\end{align*}
+
+\end{document}
