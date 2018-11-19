@@ -1,2 +1,4 @@
 *.pdf
 *.log
+doc/build
+doc/source
