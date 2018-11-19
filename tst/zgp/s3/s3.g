@@ -159,3 +159,11 @@ mymarks:= function(m)
 end;
 
 
+ddd:= DiagonalMat([1, 3, 2, 6, 3, 6, 2, 6]/6);
+ppp:= ddd^0;
+for ij in [
+        [5,2], [7,3]
+        ] do
+    i:= ij[1];  j:= ij[2];
+    ppp[i][j]:= 1;
+od;
