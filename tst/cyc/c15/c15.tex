@@ -1,0 +1,2835 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[euler-digits]{eulervm}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\section*{$C_{15}$.}
+
+\begin{center}
+\scriptsize\arraycolsep3pt
+\begin{align*}
+  \left(
+  \begin{array}{c|c|c|c}
+    1 & 2 & 3 & 4 \\\hline
+    5 & 6 & 7 & 8 \\\hline
+    9 & 10 & 11 & 12 \\\hline
+    13 & 14 & 15 & 16
+  \end{array}
+  \right)
+\left(\begin{array}{rr|rr}%
+17&18&19&20\\%
+18&17&20&19\\\hline
+21&22&23&24\\%
+22&21&24&23\\%
+\end{array}\right)%
+\left(\begin{array}{rrrr|rrrr}%
+25&28&26&27&29&32&30&31\\%
+27&25&28&26&31&29&32&30\\%
+26&27&25&28&30&31&29&32\\%
+28&26&27&25&32&30&31&29\\\hline
+33&36&34&35&37&40&38&39\\%
+35&33&36&34&39&37&40&38\\%
+34&35&33&36&38&39&37&40\\%
+36&34&35&33&40&38&39&37\\%
+\end{array}\right)%
+\left(\begin{array}{rrrrrrrr}%
+41&47&43&45&42&48&44&46\\%
+45&41&47&43&46&42&48&44\\%
+43&45&41&47&44&46&42&48\\%
+47&43&45&41&48&44&46&42\\%
+42&48&44&46&41&47&43&45\\%
+46&42&48&44&45&41&47&43\\%
+44&46&42&48&43&45&41&47\\%
+48&44&46&42&47&43&45&41\\%
+\end{array}\right)%
+\end{align*}
+\end{center}
+\begin{center}
+  \tikzset{every
+    picture/.style={scale=0.15,nodes={rectangle,fill=black!50!green,inner
+        sep=0.8mm}}}
+
+  % gap> for sub in subs do > Print(TikzRelationSubgroup(GG, elm,
+  % sub)); od;
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw[shift={(-0.5,-0.5)},black!30,very
+    thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (1,14) node {}; \draw (2,14) node {};
+    \draw (3,14) node {}; \draw (4,14) node {}; \draw (5,14) node {};
+    \draw (6,14) node {}; \draw (7,14) node {}; \draw (8,14) node {};
+    \draw (9,14) node {}; \draw (10,14) node {}; \draw (11,14) node
+    {}; \draw (12,14) node {}; \draw (13,14) node {}; \draw (14,14)
+    node {}; \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid
+    (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (0,9) node {}; \draw (0,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (0,9) node {};
+    \draw (3,9) node {}; \draw (6,9) node {}; \draw (9,9) node {};
+    \draw (12,9) node {}; \draw (0,4) node {}; \draw (3,4) node {};
+    \draw (6,4) node {}; \draw (9,4) node {}; \draw (12,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (1,14) node {}; \draw (2,14) node {};
+    \draw (3,14) node {}; \draw (4,14) node {}; \draw (5,14) node {};
+    \draw (6,14) node {}; \draw (7,14) node {}; \draw (8,14) node {};
+    \draw (9,14) node {}; \draw (10,14) node {}; \draw (11,14) node
+    {}; \draw (12,14) node {}; \draw (13,14) node {}; \draw (14,14)
+    node {}; \draw (0,9) node {}; \draw (1,9) node {}; \draw (2,9)
+    node {}; \draw (3,9) node {}; \draw (4,9) node {}; \draw (5,9)
+    node {}; \draw (6,9) node {}; \draw (7,9) node {}; \draw (8,9)
+    node {}; \draw (9,9) node {}; \draw (10,9) node {}; \draw (11,9)
+    node {}; \draw (12,9) node {}; \draw (13,9) node {}; \draw (14,9)
+    node {}; \draw (0,4) node {}; \draw (1,4) node {}; \draw (2,4)
+    node {}; \draw (3,4) node {}; \draw (4,4) node {}; \draw (5,4)
+    node {}; \draw (6,4) node {}; \draw (7,4) node {}; \draw (8,4)
+    node {}; \draw (9,4) node {}; \draw (10,4) node {}; \draw (11,4)
+    node {}; \draw (12,4) node {}; \draw (13,4) node {}; \draw (14,4)
+    node {}; \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid
+    (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (0,11) node {}; \draw (0,8) node {};
+    \draw (0,5) node {}; \draw (0,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (0,11) node {}; \draw (5,11) node {}; \draw (10,11) node {};
+    \draw (0,8) node {}; \draw (5,8) node {}; \draw (10,8) node {};
+    \draw (0,5) node {}; \draw (5,5) node {}; \draw (10,5) node {};
+    \draw (0,2) node {}; \draw (5,2) node {}; \draw (10,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (0,11) node {};
+    \draw (3,11) node {}; \draw (6,11) node {}; \draw (9,11) node {};
+    \draw (12,11) node {}; \draw (0,8) node {}; \draw (3,8) node {};
+    \draw (6,8) node {}; \draw (9,8) node {}; \draw (12,8) node {};
+    \draw (0,5) node {}; \draw (3,5) node {}; \draw (6,5) node {};
+    \draw (9,5) node {}; \draw (12,5) node {}; \draw (0,2) node {};
+    \draw (3,2) node {}; \draw (6,2) node {}; \draw (9,2) node {};
+    \draw (12,2) node {}; \draw[shift={(-0.5,-0.5)},black!30,very
+    thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (1,14) node {}; \draw (2,14) node {};
+    \draw (3,14) node {}; \draw (4,14) node {}; \draw (5,14) node {};
+    \draw (6,14) node {}; \draw (7,14) node {}; \draw (8,14) node {};
+    \draw (9,14) node {}; \draw (10,14) node {}; \draw (11,14) node
+    {}; \draw (12,14) node {}; \draw (13,14) node {}; \draw (14,14)
+    node {}; \draw (0,11) node {}; \draw (1,11) node {}; \draw (2,11)
+    node {}; \draw (3,11) node {}; \draw (4,11) node {}; \draw (5,11)
+    node {}; \draw (6,11) node {}; \draw (7,11) node {}; \draw (8,11)
+    node {}; \draw (9,11) node {}; \draw (10,11) node {}; \draw
+    (11,11) node {}; \draw (12,11) node {}; \draw (13,11) node {};
+    \draw (14,11) node {}; \draw (0,8) node {}; \draw (1,8) node {};
+    \draw (2,8) node {}; \draw (3,8) node {}; \draw (4,8) node {};
+    \draw (5,8) node {}; \draw (6,8) node {}; \draw (7,8) node {};
+    \draw (8,8) node {}; \draw (9,8) node {}; \draw (10,8) node {};
+    \draw (11,8) node {}; \draw (12,8) node {}; \draw (13,8) node {};
+    \draw (14,8) node {}; \draw (0,5) node {}; \draw (1,5) node {};
+    \draw (2,5) node {}; \draw (3,5) node {}; \draw (4,5) node {};
+    \draw (5,5) node {}; \draw (6,5) node {}; \draw (7,5) node {};
+    \draw (8,5) node {}; \draw (9,5) node {}; \draw (10,5) node {};
+    \draw (11,5) node {}; \draw (12,5) node {}; \draw (13,5) node {};
+    \draw (14,5) node {}; \draw (0,2) node {}; \draw (1,2) node {};
+    \draw (2,2) node {}; \draw (3,2) node {}; \draw (4,2) node {};
+    \draw (5,2) node {}; \draw (6,2) node {}; \draw (7,2) node {};
+    \draw (8,2) node {}; \draw (9,2) node {}; \draw (10,2) node {};
+    \draw (11,2) node {}; \draw (12,2) node {}; \draw (13,2) node {};
+    \draw (14,2) node {}; \draw[shift={(-0.5,-0.5)},black!30,very
+    thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (0,13) node {}; \draw (0,12) node {};
+    \draw (0,11) node {}; \draw (0,10) node {}; \draw (0,9) node {};
+    \draw (0,8) node {}; \draw (0,7) node {}; \draw (0,6) node {};
+    \draw (0,5) node {}; \draw (0,4) node {}; \draw (0,3) node {};
+    \draw (0,2) node {}; \draw (0,1) node {}; \draw (0,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (0,13) node {}; \draw (5,13) node {}; \draw (10,13) node {};
+    \draw (0,12) node {}; \draw (5,12) node {}; \draw (10,12) node {};
+    \draw (0,11) node {}; \draw (5,11) node {}; \draw (10,11) node {};
+    \draw (0,10) node {}; \draw (5,10) node {}; \draw (10,10) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (0,8) node {}; \draw (5,8) node {}; \draw (10,8) node {};
+    \draw (0,7) node {}; \draw (5,7) node {}; \draw (10,7) node {};
+    \draw (0,6) node {}; \draw (5,6) node {}; \draw (10,6) node {};
+    \draw (0,5) node {}; \draw (5,5) node {}; \draw (10,5) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw (0,3) node {}; \draw (5,3) node {}; \draw (10,3) node {};
+    \draw (0,2) node {}; \draw (5,2) node {}; \draw (10,2) node {};
+    \draw (0,1) node {}; \draw (5,1) node {}; \draw (10,1) node {};
+    \draw (0,0) node {}; \draw (5,0) node {}; \draw (10,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (0,13) node {};
+    \draw (3,13) node {}; \draw (6,13) node {}; \draw (9,13) node {};
+    \draw (12,13) node {}; \draw (0,12) node {}; \draw (3,12) node {};
+    \draw (6,12) node {}; \draw (9,12) node {}; \draw (12,12) node {};
+    \draw (0,11) node {}; \draw (3,11) node {}; \draw (6,11) node {};
+    \draw (9,11) node {}; \draw (12,11) node {}; \draw (0,10) node {};
+    \draw (3,10) node {}; \draw (6,10) node {}; \draw (9,10) node {};
+    \draw (12,10) node {}; \draw (0,9) node {}; \draw (3,9) node {};
+    \draw (6,9) node {}; \draw (9,9) node {}; \draw (12,9) node {};
+    \draw (0,8) node {}; \draw (3,8) node {}; \draw (6,8) node {};
+    \draw (9,8) node {}; \draw (12,8) node {}; \draw (0,7) node {};
+    \draw (3,7) node {}; \draw (6,7) node {}; \draw (9,7) node {};
+    \draw (12,7) node {}; \draw (0,6) node {}; \draw (3,6) node {};
+    \draw (6,6) node {}; \draw (9,6) node {}; \draw (12,6) node {};
+    \draw (0,5) node {}; \draw (3,5) node {}; \draw (6,5) node {};
+    \draw (9,5) node {}; \draw (12,5) node {}; \draw (0,4) node {};
+    \draw (3,4) node {}; \draw (6,4) node {}; \draw (9,4) node {};
+    \draw (12,4) node {}; \draw (0,3) node {}; \draw (3,3) node {};
+    \draw (6,3) node {}; \draw (9,3) node {}; \draw (12,3) node {};
+    \draw (0,2) node {}; \draw (3,2) node {}; \draw (6,2) node {};
+    \draw (9,2) node {}; \draw (12,2) node {}; \draw (0,1) node {};
+    \draw (3,1) node {}; \draw (6,1) node {}; \draw (9,1) node {};
+    \draw (12,1) node {}; \draw (0,0) node {}; \draw (3,0) node {};
+    \draw (6,0) node {}; \draw (9,0) node {}; \draw (12,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (1,14) node {}; \draw (2,14) node {};
+    \draw (3,14) node {}; \draw (4,14) node {}; \draw (5,14) node {};
+    \draw (6,14) node {}; \draw (7,14) node {}; \draw (8,14) node {};
+    \draw (9,14) node {}; \draw (10,14) node {}; \draw (11,14) node
+    {}; \draw (12,14) node {}; \draw (13,14) node {}; \draw (14,14)
+    node {}; \draw (0,13) node {}; \draw (1,13) node {}; \draw (2,13)
+    node {}; \draw (3,13) node {}; \draw (4,13) node {}; \draw (5,13)
+    node {}; \draw (6,13) node {}; \draw (7,13) node {}; \draw (8,13)
+    node {}; \draw (9,13) node {}; \draw (10,13) node {}; \draw
+    (11,13) node {}; \draw (12,13) node {}; \draw (13,13) node {};
+    \draw (14,13) node {}; \draw (0,12) node {}; \draw (1,12) node {};
+    \draw (2,12) node {}; \draw (3,12) node {}; \draw (4,12) node {};
+    \draw (5,12) node {}; \draw (6,12) node {}; \draw (7,12) node {};
+    \draw (8,12) node {}; \draw (9,12) node {}; \draw (10,12) node {};
+    \draw (11,12) node {}; \draw (12,12) node {}; \draw (13,12) node
+    {}; \draw (14,12) node {}; \draw (0,11) node {}; \draw (1,11) node
+    {}; \draw (2,11) node {}; \draw (3,11) node {}; \draw (4,11) node
+    {}; \draw (5,11) node {}; \draw (6,11) node {}; \draw (7,11) node
+    {}; \draw (8,11) node {}; \draw (9,11) node {}; \draw (10,11) node
+    {}; \draw (11,11) node {}; \draw (12,11) node {}; \draw (13,11)
+    node {}; \draw (14,11) node {}; \draw (0,10) node {}; \draw (1,10)
+    node {}; \draw (2,10) node {}; \draw (3,10) node {}; \draw (4,10)
+    node {}; \draw (5,10) node {}; \draw (6,10) node {}; \draw (7,10)
+    node {}; \draw (8,10) node {}; \draw (9,10) node {}; \draw (10,10)
+    node {}; \draw (11,10) node {}; \draw (12,10) node {}; \draw
+    (13,10) node {}; \draw (14,10) node {}; \draw (0,9) node {}; \draw
+    (1,9) node {}; \draw (2,9) node {}; \draw (3,9) node {}; \draw
+    (4,9) node {}; \draw (5,9) node {}; \draw (6,9) node {}; \draw
+    (7,9) node {}; \draw (8,9) node {}; \draw (9,9) node {}; \draw
+    (10,9) node {}; \draw (11,9) node {}; \draw (12,9) node {}; \draw
+    (13,9) node {}; \draw (14,9) node {}; \draw (0,8) node {}; \draw
+    (1,8) node {}; \draw (2,8) node {}; \draw (3,8) node {}; \draw
+    (4,8) node {}; \draw (5,8) node {}; \draw (6,8) node {}; \draw
+    (7,8) node {}; \draw (8,8) node {}; \draw (9,8) node {}; \draw
+    (10,8) node {}; \draw (11,8) node {}; \draw (12,8) node {}; \draw
+    (13,8) node {}; \draw (14,8) node {}; \draw (0,7) node {}; \draw
+    (1,7) node {}; \draw (2,7) node {}; \draw (3,7) node {}; \draw
+    (4,7) node {}; \draw (5,7) node {}; \draw (6,7) node {}; \draw
+    (7,7) node {}; \draw (8,7) node {}; \draw (9,7) node {}; \draw
+    (10,7) node {}; \draw (11,7) node {}; \draw (12,7) node {}; \draw
+    (13,7) node {}; \draw (14,7) node {}; \draw (0,6) node {}; \draw
+    (1,6) node {}; \draw (2,6) node {}; \draw (3,6) node {}; \draw
+    (4,6) node {}; \draw (5,6) node {}; \draw (6,6) node {}; \draw
+    (7,6) node {}; \draw (8,6) node {}; \draw (9,6) node {}; \draw
+    (10,6) node {}; \draw (11,6) node {}; \draw (12,6) node {}; \draw
+    (13,6) node {}; \draw (14,6) node {}; \draw (0,5) node {}; \draw
+    (1,5) node {}; \draw (2,5) node {}; \draw (3,5) node {}; \draw
+    (4,5) node {}; \draw (5,5) node {}; \draw (6,5) node {}; \draw
+    (7,5) node {}; \draw (8,5) node {}; \draw (9,5) node {}; \draw
+    (10,5) node {}; \draw (11,5) node {}; \draw (12,5) node {}; \draw
+    (13,5) node {}; \draw (14,5) node {}; \draw (0,4) node {}; \draw
+    (1,4) node {}; \draw (2,4) node {}; \draw (3,4) node {}; \draw
+    (4,4) node {}; \draw (5,4) node {}; \draw (6,4) node {}; \draw
+    (7,4) node {}; \draw (8,4) node {}; \draw (9,4) node {}; \draw
+    (10,4) node {}; \draw (11,4) node {}; \draw (12,4) node {}; \draw
+    (13,4) node {}; \draw (14,4) node {}; \draw (0,3) node {}; \draw
+    (1,3) node {}; \draw (2,3) node {}; \draw (3,3) node {}; \draw
+    (4,3) node {}; \draw (5,3) node {}; \draw (6,3) node {}; \draw
+    (7,3) node {}; \draw (8,3) node {}; \draw (9,3) node {}; \draw
+    (10,3) node {}; \draw (11,3) node {}; \draw (12,3) node {}; \draw
+    (13,3) node {}; \draw (14,3) node {}; \draw (0,2) node {}; \draw
+    (1,2) node {}; \draw (2,2) node {}; \draw (3,2) node {}; \draw
+    (4,2) node {}; \draw (5,2) node {}; \draw (6,2) node {}; \draw
+    (7,2) node {}; \draw (8,2) node {}; \draw (9,2) node {}; \draw
+    (10,2) node {}; \draw (11,2) node {}; \draw (12,2) node {}; \draw
+    (13,2) node {}; \draw (14,2) node {}; \draw (0,1) node {}; \draw
+    (1,1) node {}; \draw (2,1) node {}; \draw (3,1) node {}; \draw
+    (4,1) node {}; \draw (5,1) node {}; \draw (6,1) node {}; \draw
+    (7,1) node {}; \draw (8,1) node {}; \draw (9,1) node {}; \draw
+    (10,1) node {}; \draw (11,1) node {}; \draw (12,1) node {}; \draw
+    (13,1) node {}; \draw (14,1) node {}; \draw (0,0) node {}; \draw
+    (1,0) node {}; \draw (2,0) node {}; \draw (3,0) node {}; \draw
+    (4,0) node {}; \draw (5,0) node {}; \draw (6,0) node {}; \draw
+    (7,0) node {}; \draw (8,0) node {}; \draw (9,0) node {}; \draw
+    (10,0) node {}; \draw (11,0) node {}; \draw (12,0) node {}; \draw
+    (13,0) node {}; \draw (14,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,9) node {}; \draw (10,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (10,9) node {}; \draw (5,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (1,9) node {};
+    \draw (4,9) node {}; \draw (7,9) node {}; \draw (10,9) node {};
+    \draw (13,9) node {}; \draw (2,4) node {}; \draw (5,4) node {};
+    \draw (8,4) node {}; \draw (11,4) node {}; \draw (14,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (2,9) node {};
+    \draw (5,9) node {}; \draw (8,9) node {}; \draw (11,9) node {};
+    \draw (14,9) node {}; \draw (1,4) node {}; \draw (4,4) node {};
+    \draw (7,4) node {}; \draw (10,4) node {}; \draw (13,4) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,13) node {}; \draw (10,12) node {};
+    \draw (0,11) node {}; \draw (5,10) node {}; \draw (10,9) node {};
+    \draw (0,8) node {}; \draw (5,7) node {}; \draw (10,6) node {};
+    \draw (0,5) node {}; \draw (5,4) node {}; \draw (10,3) node {};
+    \draw (0,2) node {}; \draw (5,1) node {}; \draw (10,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (10,13) node {}; \draw (5,12) node {};
+    \draw (0,11) node {}; \draw (10,10) node {}; \draw (5,9) node {};
+    \draw (0,8) node {}; \draw (10,7) node {}; \draw (5,6) node {};
+    \draw (0,5) node {}; \draw (10,4) node {}; \draw (5,3) node {};
+    \draw (0,2) node {}; \draw (10,1) node {}; \draw (5,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (1,13) node {};
+    \draw (4,13) node {}; \draw (7,13) node {}; \draw (10,13) node {};
+    \draw (13,13) node {}; \draw (2,12) node {}; \draw (5,12) node {};
+    \draw (8,12) node {}; \draw (11,12) node {}; \draw (14,12) node
+    {}; \draw (0,11) node {}; \draw (3,11) node {}; \draw (6,11) node
+    {}; \draw (9,11) node {}; \draw (12,11) node {}; \draw (1,10) node
+    {}; \draw (4,10) node {}; \draw (7,10) node {}; \draw (10,10) node
+    {}; \draw (13,10) node {}; \draw (2,9) node {}; \draw (5,9) node
+    {}; \draw (8,9) node {}; \draw (11,9) node {}; \draw (14,9) node
+    {}; \draw (0,8) node {}; \draw (3,8) node {}; \draw (6,8) node {};
+    \draw (9,8) node {}; \draw (12,8) node {}; \draw (1,7) node {};
+    \draw (4,7) node {}; \draw (7,7) node {}; \draw (10,7) node {};
+    \draw (13,7) node {}; \draw (2,6) node {}; \draw (5,6) node {};
+    \draw (8,6) node {}; \draw (11,6) node {}; \draw (14,6) node {};
+    \draw (0,5) node {}; \draw (3,5) node {}; \draw (6,5) node {};
+    \draw (9,5) node {}; \draw (12,5) node {}; \draw (1,4) node {};
+    \draw (4,4) node {}; \draw (7,4) node {}; \draw (10,4) node {};
+    \draw (13,4) node {}; \draw (2,3) node {}; \draw (5,3) node {};
+    \draw (8,3) node {}; \draw (11,3) node {}; \draw (14,3) node {};
+    \draw (0,2) node {}; \draw (3,2) node {}; \draw (6,2) node {};
+    \draw (9,2) node {}; \draw (12,2) node {}; \draw (1,1) node {};
+    \draw (4,1) node {}; \draw (7,1) node {}; \draw (10,1) node {};
+    \draw (13,1) node {}; \draw (2,0) node {}; \draw (5,0) node {};
+    \draw (8,0) node {}; \draw (11,0) node {}; \draw (14,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,14) node {}; \draw (6,14) node {};
+    \draw (9,14) node {}; \draw (12,14) node {}; \draw (2,13) node {};
+    \draw (5,13) node {}; \draw (8,13) node {}; \draw (11,13) node {};
+    \draw (14,13) node {}; \draw (1,12) node {}; \draw (4,12) node {};
+    \draw (7,12) node {}; \draw (10,12) node {}; \draw (13,12) node
+    {}; \draw (0,11) node {}; \draw (3,11) node {}; \draw (6,11) node
+    {}; \draw (9,11) node {}; \draw (12,11) node {}; \draw (2,10) node
+    {}; \draw (5,10) node {}; \draw (8,10) node {}; \draw (11,10) node
+    {}; \draw (14,10) node {}; \draw (1,9) node {}; \draw (4,9) node
+    {}; \draw (7,9) node {}; \draw (10,9) node {}; \draw (13,9) node
+    {}; \draw (0,8) node {}; \draw (3,8) node {}; \draw (6,8) node {};
+    \draw (9,8) node {}; \draw (12,8) node {}; \draw (2,7) node {};
+    \draw (5,7) node {}; \draw (8,7) node {}; \draw (11,7) node {};
+    \draw (14,7) node {}; \draw (1,6) node {}; \draw (4,6) node {};
+    \draw (7,6) node {}; \draw (10,6) node {}; \draw (13,6) node {};
+    \draw (0,5) node {}; \draw (3,5) node {}; \draw (6,5) node {};
+    \draw (9,5) node {}; \draw (12,5) node {}; \draw (2,4) node {};
+    \draw (5,4) node {}; \draw (8,4) node {}; \draw (11,4) node {};
+    \draw (14,4) node {}; \draw (1,3) node {}; \draw (4,3) node {};
+    \draw (7,3) node {}; \draw (10,3) node {}; \draw (13,3) node {};
+    \draw (0,2) node {}; \draw (3,2) node {}; \draw (6,2) node {};
+    \draw (9,2) node {}; \draw (12,2) node {}; \draw (2,1) node {};
+    \draw (5,1) node {}; \draw (8,1) node {}; \draw (11,1) node {};
+    \draw (14,1) node {}; \draw (1,0) node {}; \draw (4,0) node {};
+    \draw (7,0) node {}; \draw (10,0) node {}; \draw (13,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,11) node {}; \draw (6,8) node {};
+    \draw (9,5) node {}; \draw (12,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (12,11) node {}; \draw (9,8) node {};
+    \draw (6,5) node {}; \draw (3,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (9,11) node {}; \draw (3,8) node {};
+    \draw (12,5) node {}; \draw (6,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (6,11) node {}; \draw (12,8) node {};
+    \draw (3,5) node {}; \draw (9,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (3,11) node {}; \draw (8,11) node {}; \draw (13,11) node {};
+    \draw (1,8) node {}; \draw (6,8) node {}; \draw (11,8) node {};
+    \draw (4,5) node {}; \draw (9,5) node {}; \draw (14,5) node {};
+    \draw (2,2) node {}; \draw (7,2) node {}; \draw (12,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (2,11) node {}; \draw (7,11) node {}; \draw (12,11) node {};
+    \draw (4,8) node {}; \draw (9,8) node {}; \draw (14,8) node {};
+    \draw (1,5) node {}; \draw (6,5) node {}; \draw (11,5) node {};
+    \draw (3,2) node {}; \draw (8,2) node {}; \draw (13,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (4,11) node {}; \draw (9,11) node {}; \draw (14,11) node {};
+    \draw (3,8) node {}; \draw (8,8) node {}; \draw (13,8) node {};
+    \draw (2,5) node {}; \draw (7,5) node {}; \draw (12,5) node {};
+    \draw (1,2) node {}; \draw (6,2) node {}; \draw (11,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (1,11) node {}; \draw (6,11) node {}; \draw (11,11) node {};
+    \draw (2,8) node {}; \draw (7,8) node {}; \draw (12,8) node {};
+    \draw (3,5) node {}; \draw (8,5) node {}; \draw (13,5) node {};
+    \draw (4,2) node {}; \draw (9,2) node {}; \draw (14,2) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (6,13) node {}; \draw (12,12) node {};
+    \draw (3,11) node {}; \draw (9,10) node {}; \draw (0,9) node {};
+    \draw (6,8) node {}; \draw (12,7) node {}; \draw (3,6) node {};
+    \draw (9,5) node {}; \draw (0,4) node {}; \draw (6,3) node {};
+    \draw (12,2) node {}; \draw (3,1) node {}; \draw (9,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (9,13) node {}; \draw (3,12) node {};
+    \draw (12,11) node {}; \draw (6,10) node {}; \draw (0,9) node {};
+    \draw (9,8) node {}; \draw (3,7) node {}; \draw (12,6) node {};
+    \draw (6,5) node {}; \draw (0,4) node {}; \draw (9,3) node {};
+    \draw (3,2) node {}; \draw (12,1) node {}; \draw (6,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (3,13) node {}; \draw (6,12) node {};
+    \draw (9,11) node {}; \draw (12,10) node {}; \draw (0,9) node {};
+    \draw (3,8) node {}; \draw (6,7) node {}; \draw (9,6) node {};
+    \draw (12,5) node {}; \draw (0,4) node {}; \draw (3,3) node {};
+    \draw (6,2) node {}; \draw (9,1) node {}; \draw (12,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (12,13) node {}; \draw (9,12) node {};
+    \draw (6,11) node {}; \draw (3,10) node {}; \draw (0,9) node {};
+    \draw (12,8) node {}; \draw (9,7) node {}; \draw (6,6) node {};
+    \draw (3,5) node {}; \draw (0,4) node {}; \draw (12,3) node {};
+    \draw (9,2) node {}; \draw (6,1) node {}; \draw (3,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (1,13) node {}; \draw (6,13) node {}; \draw (11,13) node {};
+    \draw (2,12) node {}; \draw (7,12) node {}; \draw (12,12) node {};
+    \draw (3,11) node {}; \draw (8,11) node {}; \draw (13,11) node {};
+    \draw (4,10) node {}; \draw (9,10) node {}; \draw (14,10) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (1,8) node {}; \draw (6,8) node {}; \draw (11,8) node {};
+    \draw (2,7) node {}; \draw (7,7) node {}; \draw (12,7) node {};
+    \draw (3,6) node {}; \draw (8,6) node {}; \draw (13,6) node {};
+    \draw (4,5) node {}; \draw (9,5) node {}; \draw (14,5) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw (1,3) node {}; \draw (6,3) node {}; \draw (11,3) node {};
+    \draw (2,2) node {}; \draw (7,2) node {}; \draw (12,2) node {};
+    \draw (3,1) node {}; \draw (8,1) node {}; \draw (13,1) node {};
+    \draw (4,0) node {}; \draw (9,0) node {}; \draw (14,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (4,13) node {}; \draw (9,13) node {}; \draw (14,13) node {};
+    \draw (3,12) node {}; \draw (8,12) node {}; \draw (13,12) node {};
+    \draw (2,11) node {}; \draw (7,11) node {}; \draw (12,11) node {};
+    \draw (1,10) node {}; \draw (6,10) node {}; \draw (11,10) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (4,8) node {}; \draw (9,8) node {}; \draw (14,8) node {};
+    \draw (3,7) node {}; \draw (8,7) node {}; \draw (13,7) node {};
+    \draw (2,6) node {}; \draw (7,6) node {}; \draw (12,6) node {};
+    \draw (1,5) node {}; \draw (6,5) node {}; \draw (11,5) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw (4,3) node {}; \draw (9,3) node {}; \draw (14,3) node {};
+    \draw (3,2) node {}; \draw (8,2) node {}; \draw (13,2) node {};
+    \draw (2,1) node {}; \draw (7,1) node {}; \draw (12,1) node {};
+    \draw (1,0) node {}; \draw (6,0) node {}; \draw (11,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (3,13) node {}; \draw (8,13) node {}; \draw (13,13) node {};
+    \draw (1,12) node {}; \draw (6,12) node {}; \draw (11,12) node {};
+    \draw (4,11) node {}; \draw (9,11) node {}; \draw (14,11) node {};
+    \draw (2,10) node {}; \draw (7,10) node {}; \draw (12,10) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (3,8) node {}; \draw (8,8) node {}; \draw (13,8) node {};
+    \draw (1,7) node {}; \draw (6,7) node {}; \draw (11,7) node {};
+    \draw (4,6) node {}; \draw (9,6) node {}; \draw (14,6) node {};
+    \draw (2,5) node {}; \draw (7,5) node {}; \draw (12,5) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw (3,3) node {}; \draw (8,3) node {}; \draw (13,3) node {};
+    \draw (1,2) node {}; \draw (6,2) node {}; \draw (11,2) node {};
+    \draw (4,1) node {}; \draw (9,1) node {}; \draw (14,1) node {};
+    \draw (2,0) node {}; \draw (7,0) node {}; \draw (12,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (5,14) node {}; \draw (10,14) node {};
+    \draw (2,13) node {}; \draw (7,13) node {}; \draw (12,13) node {};
+    \draw (4,12) node {}; \draw (9,12) node {}; \draw (14,12) node {};
+    \draw (1,11) node {}; \draw (6,11) node {}; \draw (11,11) node {};
+    \draw (3,10) node {}; \draw (8,10) node {}; \draw (13,10) node {};
+    \draw (0,9) node {}; \draw (5,9) node {}; \draw (10,9) node {};
+    \draw (2,8) node {}; \draw (7,8) node {}; \draw (12,8) node {};
+    \draw (4,7) node {}; \draw (9,7) node {}; \draw (14,7) node {};
+    \draw (1,6) node {}; \draw (6,6) node {}; \draw (11,6) node {};
+    \draw (3,5) node {}; \draw (8,5) node {}; \draw (13,5) node {};
+    \draw (0,4) node {}; \draw (5,4) node {}; \draw (10,4) node {};
+    \draw (2,3) node {}; \draw (7,3) node {}; \draw (12,3) node {};
+    \draw (4,2) node {}; \draw (9,2) node {}; \draw (14,2) node {};
+    \draw (1,1) node {}; \draw (6,1) node {}; \draw (11,1) node {};
+    \draw (3,0) node {}; \draw (8,0) node {}; \draw (13,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (1,13) node {}; \draw (2,12) node {};
+    \draw (3,11) node {}; \draw (4,10) node {}; \draw (5,9) node {};
+    \draw (6,8) node {}; \draw (7,7) node {}; \draw (8,6) node {};
+    \draw (9,5) node {}; \draw (10,4) node {}; \draw (11,3) node {};
+    \draw (12,2) node {}; \draw (13,1) node {}; \draw (14,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (11,13) node {}; \draw (7,12) node {};
+    \draw (3,11) node {}; \draw (14,10) node {}; \draw (10,9) node {};
+    \draw (6,8) node {}; \draw (2,7) node {}; \draw (13,6) node {};
+    \draw (9,5) node {}; \draw (5,4) node {}; \draw (1,3) node {};
+    \draw (12,2) node {}; \draw (8,1) node {}; \draw (4,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (4,13) node {}; \draw (8,12) node {};
+    \draw (12,11) node {}; \draw (1,10) node {}; \draw (5,9) node {};
+    \draw (9,8) node {}; \draw (13,7) node {}; \draw (2,6) node {};
+    \draw (6,5) node {}; \draw (10,4) node {}; \draw (14,3) node {};
+    \draw (3,2) node {}; \draw (7,1) node {}; \draw (11,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (14,13) node {}; \draw (13,12) node
+    {}; \draw (12,11) node {}; \draw (11,10) node {}; \draw (10,9)
+    node {}; \draw (9,8) node {}; \draw (8,7) node {}; \draw (7,6)
+    node {}; \draw (6,5) node {}; \draw (5,4) node {}; \draw (4,3)
+    node {}; \draw (3,2) node {}; \draw (2,1) node {}; \draw (1,0)
+    node {}; \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid
+    (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (13,13) node {}; \draw (11,12) node
+    {}; \draw (9,11) node {}; \draw (7,10) node {}; \draw (5,9) node
+    {}; \draw (3,8) node {}; \draw (1,7) node {}; \draw (14,6) node
+    {}; \draw (12,5) node {}; \draw (10,4) node {}; \draw (8,3) node
+    {}; \draw (6,2) node {}; \draw (4,1) node {}; \draw (2,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (8,13) node {}; \draw (1,12) node {};
+    \draw (9,11) node {}; \draw (2,10) node {}; \draw (10,9) node {};
+    \draw (3,8) node {}; \draw (11,7) node {}; \draw (4,6) node {};
+    \draw (12,5) node {}; \draw (5,4) node {}; \draw (13,3) node {};
+    \draw (6,2) node {}; \draw (14,1) node {}; \draw (7,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (7,13) node {}; \draw (14,12) node {};
+    \draw (6,11) node {}; \draw (13,10) node {}; \draw (5,9) node {};
+    \draw (12,8) node {}; \draw (4,7) node {}; \draw (11,6) node {};
+    \draw (3,5) node {}; \draw (10,4) node {}; \draw (2,3) node {};
+    \draw (9,2) node {}; \draw (1,1) node {}; \draw (8,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,14) node {}; \draw (2,13) node {}; \draw (4,12) node {};
+    \draw (6,11) node {}; \draw (8,10) node {}; \draw (10,9) node {};
+    \draw (12,8) node {}; \draw (14,7) node {}; \draw (1,6) node {};
+    \draw (3,5) node {}; \draw (5,4) node {}; \draw (7,3) node {};
+    \draw (9,2) node {}; \draw (11,1) node {}; \draw (13,0) node {};
+    \draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+  \end{tikzpicture}
+\end{center}
+
+\newpage 
+\begin{center}
+  \tikzset{every
+    picture/.style={scale=0.15,nodes={rectangle,fill=black!50!green,inner
+        sep=0.8mm}}}
+
+%gap> for red in reds do 
+%> Print(TikzRelationMat(red)); od;
+\begin{tikzpicture}
+\draw (0,14) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,14) node {};
+\draw (10,14) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,14) node {};
+\draw (6,14) node {};
+\draw (9,14) node {};
+\draw (12,14) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,14) node {};
+\draw (2,14) node {};
+\draw (4,14) node {};
+\draw (7,14) node {};
+\draw (8,14) node {};
+\draw (11,14) node {};
+\draw (13,14) node {};
+\draw (14,14) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (0,9) node {};
+\draw (0,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,9) node {};
+\draw (10,9) node {};
+\draw (5,4) node {};
+\draw (10,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,9) node {};
+\draw (6,9) node {};
+\draw (9,9) node {};
+\draw (12,9) node {};
+\draw (3,4) node {};
+\draw (6,4) node {};
+\draw (9,4) node {};
+\draw (12,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,9) node {};
+\draw (2,9) node {};
+\draw (4,9) node {};
+\draw (7,9) node {};
+\draw (8,9) node {};
+\draw (11,9) node {};
+\draw (13,9) node {};
+\draw (14,9) node {};
+\draw (1,4) node {};
+\draw (2,4) node {};
+\draw (4,4) node {};
+\draw (7,4) node {};
+\draw (8,4) node {};
+\draw (11,4) node {};
+\draw (13,4) node {};
+\draw (14,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (0,11) node {};
+\draw (0,8) node {};
+\draw (0,5) node {};
+\draw (0,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,11) node {};
+\draw (10,11) node {};
+\draw (5,8) node {};
+\draw (10,8) node {};
+\draw (5,5) node {};
+\draw (10,5) node {};
+\draw (5,2) node {};
+\draw (10,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,11) node {};
+\draw (6,11) node {};
+\draw (9,11) node {};
+\draw (12,11) node {};
+\draw (3,8) node {};
+\draw (6,8) node {};
+\draw (9,8) node {};
+\draw (12,8) node {};
+\draw (3,5) node {};
+\draw (6,5) node {};
+\draw (9,5) node {};
+\draw (12,5) node {};
+\draw (3,2) node {};
+\draw (6,2) node {};
+\draw (9,2) node {};
+\draw (12,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,11) node {};
+\draw (2,11) node {};
+\draw (4,11) node {};
+\draw (7,11) node {};
+\draw (8,11) node {};
+\draw (11,11) node {};
+\draw (13,11) node {};
+\draw (14,11) node {};
+\draw (1,8) node {};
+\draw (2,8) node {};
+\draw (4,8) node {};
+\draw (7,8) node {};
+\draw (8,8) node {};
+\draw (11,8) node {};
+\draw (13,8) node {};
+\draw (14,8) node {};
+\draw (1,5) node {};
+\draw (2,5) node {};
+\draw (4,5) node {};
+\draw (7,5) node {};
+\draw (8,5) node {};
+\draw (11,5) node {};
+\draw (13,5) node {};
+\draw (14,5) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (4,2) node {};
+\draw (7,2) node {};
+\draw (8,2) node {};
+\draw (11,2) node {};
+\draw (13,2) node {};
+\draw (14,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (0,13) node {};
+\draw (0,12) node {};
+\draw (0,10) node {};
+\draw (0,7) node {};
+\draw (0,6) node {};
+\draw (0,3) node {};
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,13) node {};
+\draw (10,13) node {};
+\draw (5,12) node {};
+\draw (10,12) node {};
+\draw (5,10) node {};
+\draw (10,10) node {};
+\draw (5,7) node {};
+\draw (10,7) node {};
+\draw (5,6) node {};
+\draw (10,6) node {};
+\draw (5,3) node {};
+\draw (10,3) node {};
+\draw (5,1) node {};
+\draw (10,1) node {};
+\draw (5,0) node {};
+\draw (10,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,13) node {};
+\draw (6,13) node {};
+\draw (9,13) node {};
+\draw (12,13) node {};
+\draw (3,12) node {};
+\draw (6,12) node {};
+\draw (9,12) node {};
+\draw (12,12) node {};
+\draw (3,10) node {};
+\draw (6,10) node {};
+\draw (9,10) node {};
+\draw (12,10) node {};
+\draw (3,7) node {};
+\draw (6,7) node {};
+\draw (9,7) node {};
+\draw (12,7) node {};
+\draw (3,6) node {};
+\draw (6,6) node {};
+\draw (9,6) node {};
+\draw (12,6) node {};
+\draw (3,3) node {};
+\draw (6,3) node {};
+\draw (9,3) node {};
+\draw (12,3) node {};
+\draw (3,1) node {};
+\draw (6,1) node {};
+\draw (9,1) node {};
+\draw (12,1) node {};
+\draw (3,0) node {};
+\draw (6,0) node {};
+\draw (9,0) node {};
+\draw (12,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,13) node {};
+\draw (2,13) node {};
+\draw (4,13) node {};
+\draw (7,13) node {};
+\draw (8,13) node {};
+\draw (11,13) node {};
+\draw (13,13) node {};
+\draw (14,13) node {};
+\draw (1,12) node {};
+\draw (2,12) node {};
+\draw (4,12) node {};
+\draw (7,12) node {};
+\draw (8,12) node {};
+\draw (11,12) node {};
+\draw (13,12) node {};
+\draw (14,12) node {};
+\draw (1,10) node {};
+\draw (2,10) node {};
+\draw (4,10) node {};
+\draw (7,10) node {};
+\draw (8,10) node {};
+\draw (11,10) node {};
+\draw (13,10) node {};
+\draw (14,10) node {};
+\draw (1,7) node {};
+\draw (2,7) node {};
+\draw (4,7) node {};
+\draw (7,7) node {};
+\draw (8,7) node {};
+\draw (11,7) node {};
+\draw (13,7) node {};
+\draw (14,7) node {};
+\draw (1,6) node {};
+\draw (2,6) node {};
+\draw (4,6) node {};
+\draw (7,6) node {};
+\draw (8,6) node {};
+\draw (11,6) node {};
+\draw (13,6) node {};
+\draw (14,6) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (4,3) node {};
+\draw (7,3) node {};
+\draw (8,3) node {};
+\draw (11,3) node {};
+\draw (13,3) node {};
+\draw (14,3) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (4,1) node {};
+\draw (7,1) node {};
+\draw (8,1) node {};
+\draw (11,1) node {};
+\draw (13,1) node {};
+\draw (14,1) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (4,0) node {};
+\draw (7,0) node {};
+\draw (8,0) node {};
+\draw (11,0) node {};
+\draw (13,0) node {};
+\draw (14,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,9) node {};
+\draw (10,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (10,9) node {};
+\draw (5,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,9) node {};
+\draw (4,9) node {};
+\draw (7,9) node {};
+\draw (13,9) node {};
+\draw (2,4) node {};
+\draw (8,4) node {};
+\draw (11,4) node {};
+\draw (14,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,9) node {};
+\draw (8,9) node {};
+\draw (11,9) node {};
+\draw (14,9) node {};
+\draw (1,4) node {};
+\draw (4,4) node {};
+\draw (7,4) node {};
+\draw (13,4) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,13) node {};
+\draw (10,12) node {};
+\draw (5,10) node {};
+\draw (5,7) node {};
+\draw (10,6) node {};
+\draw (10,3) node {};
+\draw (5,1) node {};
+\draw (10,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (10,13) node {};
+\draw (5,12) node {};
+\draw (10,10) node {};
+\draw (10,7) node {};
+\draw (5,6) node {};
+\draw (5,3) node {};
+\draw (10,1) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,13) node {};
+\draw (4,13) node {};
+\draw (7,13) node {};
+\draw (13,13) node {};
+\draw (2,12) node {};
+\draw (8,12) node {};
+\draw (11,12) node {};
+\draw (14,12) node {};
+\draw (1,10) node {};
+\draw (4,10) node {};
+\draw (7,10) node {};
+\draw (13,10) node {};
+\draw (1,7) node {};
+\draw (4,7) node {};
+\draw (7,7) node {};
+\draw (13,7) node {};
+\draw (2,6) node {};
+\draw (8,6) node {};
+\draw (11,6) node {};
+\draw (14,6) node {};
+\draw (2,3) node {};
+\draw (8,3) node {};
+\draw (11,3) node {};
+\draw (14,3) node {};
+\draw (1,1) node {};
+\draw (4,1) node {};
+\draw (7,1) node {};
+\draw (13,1) node {};
+\draw (2,0) node {};
+\draw (8,0) node {};
+\draw (11,0) node {};
+\draw (14,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,13) node {};
+\draw (8,13) node {};
+\draw (11,13) node {};
+\draw (14,13) node {};
+\draw (1,12) node {};
+\draw (4,12) node {};
+\draw (7,12) node {};
+\draw (13,12) node {};
+\draw (2,10) node {};
+\draw (8,10) node {};
+\draw (11,10) node {};
+\draw (14,10) node {};
+\draw (2,7) node {};
+\draw (8,7) node {};
+\draw (11,7) node {};
+\draw (14,7) node {};
+\draw (1,6) node {};
+\draw (4,6) node {};
+\draw (7,6) node {};
+\draw (13,6) node {};
+\draw (1,3) node {};
+\draw (4,3) node {};
+\draw (7,3) node {};
+\draw (13,3) node {};
+\draw (2,1) node {};
+\draw (8,1) node {};
+\draw (11,1) node {};
+\draw (14,1) node {};
+\draw (1,0) node {};
+\draw (4,0) node {};
+\draw (7,0) node {};
+\draw (13,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,11) node {};
+\draw (6,8) node {};
+\draw (9,5) node {};
+\draw (12,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (12,11) node {};
+\draw (9,8) node {};
+\draw (6,5) node {};
+\draw (3,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (9,11) node {};
+\draw (3,8) node {};
+\draw (12,5) node {};
+\draw (6,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (6,11) node {};
+\draw (12,8) node {};
+\draw (3,5) node {};
+\draw (9,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (8,11) node {};
+\draw (13,11) node {};
+\draw (1,8) node {};
+\draw (11,8) node {};
+\draw (4,5) node {};
+\draw (14,5) node {};
+\draw (2,2) node {};
+\draw (7,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,11) node {};
+\draw (7,11) node {};
+\draw (4,8) node {};
+\draw (14,8) node {};
+\draw (1,5) node {};
+\draw (11,5) node {};
+\draw (8,2) node {};
+\draw (13,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (4,11) node {};
+\draw (14,11) node {};
+\draw (8,8) node {};
+\draw (13,8) node {};
+\draw (2,5) node {};
+\draw (7,5) node {};
+\draw (1,2) node {};
+\draw (11,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,11) node {};
+\draw (11,11) node {};
+\draw (2,8) node {};
+\draw (7,8) node {};
+\draw (8,5) node {};
+\draw (13,5) node {};
+\draw (4,2) node {};
+\draw (14,2) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (6,13) node {};
+\draw (12,12) node {};
+\draw (9,10) node {};
+\draw (12,7) node {};
+\draw (3,6) node {};
+\draw (6,3) node {};
+\draw (3,1) node {};
+\draw (9,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (9,13) node {};
+\draw (3,12) node {};
+\draw (6,10) node {};
+\draw (3,7) node {};
+\draw (12,6) node {};
+\draw (9,3) node {};
+\draw (12,1) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,13) node {};
+\draw (6,12) node {};
+\draw (12,10) node {};
+\draw (6,7) node {};
+\draw (9,6) node {};
+\draw (3,3) node {};
+\draw (9,1) node {};
+\draw (12,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (12,13) node {};
+\draw (9,12) node {};
+\draw (3,10) node {};
+\draw (9,7) node {};
+\draw (6,6) node {};
+\draw (12,3) node {};
+\draw (6,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,13) node {};
+\draw (11,13) node {};
+\draw (2,12) node {};
+\draw (7,12) node {};
+\draw (4,10) node {};
+\draw (14,10) node {};
+\draw (2,7) node {};
+\draw (7,7) node {};
+\draw (8,6) node {};
+\draw (13,6) node {};
+\draw (1,3) node {};
+\draw (11,3) node {};
+\draw (8,1) node {};
+\draw (13,1) node {};
+\draw (4,0) node {};
+\draw (14,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (4,13) node {};
+\draw (14,13) node {};
+\draw (8,12) node {};
+\draw (13,12) node {};
+\draw (1,10) node {};
+\draw (11,10) node {};
+\draw (8,7) node {};
+\draw (13,7) node {};
+\draw (2,6) node {};
+\draw (7,6) node {};
+\draw (4,3) node {};
+\draw (14,3) node {};
+\draw (2,1) node {};
+\draw (7,1) node {};
+\draw (1,0) node {};
+\draw (11,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (8,13) node {};
+\draw (13,13) node {};
+\draw (1,12) node {};
+\draw (11,12) node {};
+\draw (2,10) node {};
+\draw (7,10) node {};
+\draw (1,7) node {};
+\draw (11,7) node {};
+\draw (4,6) node {};
+\draw (14,6) node {};
+\draw (8,3) node {};
+\draw (13,3) node {};
+\draw (4,1) node {};
+\draw (14,1) node {};
+\draw (2,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,13) node {};
+\draw (7,13) node {};
+\draw (4,12) node {};
+\draw (14,12) node {};
+\draw (8,10) node {};
+\draw (13,10) node {};
+\draw (4,7) node {};
+\draw (14,7) node {};
+\draw (1,6) node {};
+\draw (11,6) node {};
+\draw (2,3) node {};
+\draw (7,3) node {};
+\draw (1,1) node {};
+\draw (11,1) node {};
+\draw (8,0) node {};
+\draw (13,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,13) node {};
+\draw (2,12) node {};
+\draw (4,10) node {};
+\draw (7,7) node {};
+\draw (8,6) node {};
+\draw (11,3) node {};
+\draw (13,1) node {};
+\draw (14,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (11,13) node {};
+\draw (7,12) node {};
+\draw (14,10) node {};
+\draw (2,7) node {};
+\draw (13,6) node {};
+\draw (1,3) node {};
+\draw (8,1) node {};
+\draw (4,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (4,13) node {};
+\draw (8,12) node {};
+\draw (1,10) node {};
+\draw (13,7) node {};
+\draw (2,6) node {};
+\draw (14,3) node {};
+\draw (7,1) node {};
+\draw (11,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (14,13) node {};
+\draw (13,12) node {};
+\draw (11,10) node {};
+\draw (8,7) node {};
+\draw (7,6) node {};
+\draw (4,3) node {};
+\draw (2,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (13,13) node {};
+\draw (11,12) node {};
+\draw (7,10) node {};
+\draw (1,7) node {};
+\draw (14,6) node {};
+\draw (8,3) node {};
+\draw (4,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (8,13) node {};
+\draw (1,12) node {};
+\draw (2,10) node {};
+\draw (11,7) node {};
+\draw (4,6) node {};
+\draw (13,3) node {};
+\draw (14,1) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (7,13) node {};
+\draw (14,12) node {};
+\draw (13,10) node {};
+\draw (4,7) node {};
+\draw (11,6) node {};
+\draw (2,3) node {};
+\draw (1,1) node {};
+\draw (8,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,13) node {};
+\draw (4,12) node {};
+\draw (8,10) node {};
+\draw (14,7) node {};
+\draw (1,6) node {};
+\draw (7,3) node {};
+\draw (11,1) node {};
+\draw (13,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (15,15);
+\end{tikzpicture}
+%gap> LogTo();
+\end{center}
+
+\newpage 
+  \tikzset{every
+    picture/.style={scale=0.15,nodes={rectangle,fill=black!50!green,inner
+        sep=0.8mm}}}
+
+\begin{center}
+\begin{tabular}{rrrr}
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,1);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,1);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,1);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,1);
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (6,3) node {};
+\draw (7,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (6,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (0,6) node {};
+\draw (0,5) node {};
+\draw (0,4) node {};
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (4,7) node {};
+\draw (5,7) node {};
+\draw (6,7) node {};
+\draw (7,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (4,6) node {};
+\draw (5,6) node {};
+\draw (6,6) node {};
+\draw (7,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (4,5) node {};
+\draw (5,5) node {};
+\draw (6,5) node {};
+\draw (7,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (4,4) node {};
+\draw (5,4) node {};
+\draw (6,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (6,3) node {};
+\draw (7,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (6,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\end{tabular}
+
+\begin{tabular}{rrrr}
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (6,1) node {};
+\draw (1,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (0,5) node {};
+\draw (0,4) node {};
+\draw (1,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (1,4) node {};
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (6,7) node {};
+\draw (1,6) node {};
+\draw (4,6) node {};
+\draw (5,6) node {};
+\draw (7,6) node {};
+\draw (0,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (6,5) node {};
+\draw (0,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (7,3) node {};
+\draw (1,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (6,1) node {};
+\draw (1,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (4,7) node {};
+\draw (5,7) node {};
+\draw (7,7) node {};
+\draw (0,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (6,6) node {};
+\draw (1,5) node {};
+\draw (4,5) node {};
+\draw (5,5) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (4,4) node {};
+\draw (5,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (6,2) node {};
+\draw (1,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\end{tabular}
+
+\begin{tabular}{rrrrrrrr}
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,2) node {};
+\draw (2,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (2,3) node {};
+\draw (0,2) node {};
+\draw (3,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,3) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (4,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (5,2) node {};
+\draw (2,1) node {};
+\draw (7,1) node {};
+\draw (1,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,3) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (5,1) node {};
+\draw (4,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (2,3) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (6,2) node {};
+\draw (1,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (3,2) node {};
+\draw (4,1) node {};
+\draw (6,1) node {};
+\draw (2,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (3,6) node {};
+\draw (2,5) node {};
+\draw (3,4) node {};
+\draw (0,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (0,4) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (3,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (3,5) node {};
+\draw (1,4) node {};
+\draw (2,3) node {};
+\draw (0,2) node {};
+\draw (2,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (3,7) node {};
+\draw (2,6) node {};
+\draw (0,5) node {};
+\draw (2,4) node {};
+\draw (1,3) node {};
+\draw (3,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (5,7) node {};
+\draw (1,6) node {};
+\draw (3,6) node {};
+\draw (2,5) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (3,4) node {};
+\draw (4,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (5,2) node {};
+\draw (4,1) node {};
+\draw (6,1) node {};
+\draw (2,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (7,7) node {};
+\draw (4,6) node {};
+\draw (6,6) node {};
+\draw (0,5) node {};
+\draw (5,5) node {};
+\draw (4,4) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (7,2) node {};
+\draw (1,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (4,7) node {};
+\draw (6,7) node {};
+\draw (0,6) node {};
+\draw (5,6) node {};
+\draw (1,5) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (5,4) node {};
+\draw (2,3) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (6,2) node {};
+\draw (2,1) node {};
+\draw (7,1) node {};
+\draw (1,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (3,7) node {};
+\draw (2,6) node {};
+\draw (7,6) node {};
+\draw (4,5) node {};
+\draw (6,5) node {};
+\draw (2,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (5,1) node {};
+\draw (4,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\end{tabular}
+
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (2,5) node {};
+\draw (3,4) node {};
+\draw (4,3) node {};
+\draw (5,2) node {};
+\draw (6,1) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (5,7) node {};
+\draw (3,6) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (4,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (4,6) node {};
+\draw (0,5) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (7,2) node {};
+\draw (3,1) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (7,7) node {};
+\draw (6,6) node {};
+\draw (5,5) node {};
+\draw (4,4) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (6,7) node {};
+\draw (5,6) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (2,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (4,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (5,4) node {};
+\draw (2,3) node {};
+\draw (6,2) node {};
+\draw (7,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (3,7) node {};
+\draw (7,6) node {};
+\draw (6,5) node {};
+\draw (2,4) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (4,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (2,6) node {};
+\draw (4,5) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (3,2) node {};
+\draw (5,1) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+%\end{tabular}
+%gap> LogTo();
+\end{center}
+
+
+%%% HERE: new table P x P
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+% 1
+\begin{tabular}{c}
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,1);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 2
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,1);
+\end{tikzpicture}
+\end{tabular}
+&
+% 3
+\begin{tabular}{c}
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,1);
+\end{tikzpicture}
+\end{tabular}
+&
+% 4
+\begin{tabular}{c}
+\begin{tikzpicture}
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,1);
+\end{tikzpicture}
+\end{tabular}
+\\\hline
+% 5
+\begin{tabular}{c}
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,2);
+\end{tikzpicture}
+\end{tabular}
+&
+% 6
+\begin{tabular}{c}
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+\\
+% 17
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+% 18
+\begin{tikzpicture}
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,2);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 7
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,2);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 8
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+\\
+% 19
+\begin{tikzpicture}
+\draw (0,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (6,1) node {};
+\draw (1,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+% 20
+\begin{tikzpicture}
+\draw (1,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,2);
+\end{tikzpicture}
+\end{tabular}
+\\\hline
+\begin{tabular}{c}
+% 9
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,4);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 10
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,4);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 11
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+\\
+% 25
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,2) node {};
+\draw (2,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+% 26
+\begin{tikzpicture}
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+% 27
+\begin{tikzpicture}
+\draw (2,3) node {};
+\draw (0,2) node {};
+\draw (3,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+% 28
+\begin{tikzpicture}
+\draw (1,3) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,4);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 12
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (6,3) node {};
+\draw (7,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (6,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+\\
+% 29
+\begin{tikzpicture}
+\draw (4,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (5,2) node {};
+\draw (2,1) node {};
+\draw (7,1) node {};
+\draw (1,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+% 30
+\begin{tikzpicture}
+\draw (1,3) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (5,1) node {};
+\draw (4,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+% 31
+\begin{tikzpicture}
+\draw (2,3) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (6,2) node {};
+\draw (1,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+% 32
+\begin{tikzpicture}
+\draw (0,3) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (3,2) node {};
+\draw (4,1) node {};
+\draw (6,1) node {};
+\draw (2,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,4);
+\end{tikzpicture}
+\end{tabular}
+\\\hline
+\begin{tabular}{c}
+% 13
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (0,6) node {};
+\draw (0,5) node {};
+\draw (0,4) node {};
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (0,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (1,8);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 14
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+\\
+% 21
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (0,5) node {};
+\draw (0,4) node {};
+\draw (1,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+% 22
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (1,4) node {};
+\draw (0,3) node {};
+\draw (0,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (2,8);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 15
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+\\
+% 33
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (3,6) node {};
+\draw (2,5) node {};
+\draw (3,4) node {};
+\draw (0,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+% 34
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (0,4) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (3,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+% 35
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (3,5) node {};
+\draw (1,4) node {};
+\draw (2,3) node {};
+\draw (0,2) node {};
+\draw (2,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+% 36
+\begin{tikzpicture}
+\draw (3,7) node {};
+\draw (2,6) node {};
+\draw (0,5) node {};
+\draw (2,4) node {};
+\draw (1,3) node {};
+\draw (3,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (4,8);
+\end{tikzpicture}
+\end{tabular}
+&
+\begin{tabular}{c}
+% 16
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (4,7) node {};
+\draw (5,7) node {};
+\draw (6,7) node {};
+\draw (7,7) node {};
+\draw (0,6) node {};
+\draw (1,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (4,6) node {};
+\draw (5,6) node {};
+\draw (6,6) node {};
+\draw (7,6) node {};
+\draw (0,5) node {};
+\draw (1,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (4,5) node {};
+\draw (5,5) node {};
+\draw (6,5) node {};
+\draw (7,5) node {};
+\draw (0,4) node {};
+\draw (1,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (4,4) node {};
+\draw (5,4) node {};
+\draw (6,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (1,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (6,3) node {};
+\draw (7,3) node {};
+\draw (0,2) node {};
+\draw (1,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (6,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (1,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (6,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (1,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (6,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\\
+% 23
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (2,7) node {};
+\draw (3,7) node {};
+\draw (6,7) node {};
+\draw (1,6) node {};
+\draw (4,6) node {};
+\draw (5,6) node {};
+\draw (7,6) node {};
+\draw (0,5) node {};
+\draw (2,5) node {};
+\draw (3,5) node {};
+\draw (6,5) node {};
+\draw (0,4) node {};
+\draw (2,4) node {};
+\draw (3,4) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (4,3) node {};
+\draw (5,3) node {};
+\draw (7,3) node {};
+\draw (1,2) node {};
+\draw (4,2) node {};
+\draw (5,2) node {};
+\draw (7,2) node {};
+\draw (0,1) node {};
+\draw (2,1) node {};
+\draw (3,1) node {};
+\draw (6,1) node {};
+\draw (1,0) node {};
+\draw (4,0) node {};
+\draw (5,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 24
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (4,7) node {};
+\draw (5,7) node {};
+\draw (7,7) node {};
+\draw (0,6) node {};
+\draw (2,6) node {};
+\draw (3,6) node {};
+\draw (6,6) node {};
+\draw (1,5) node {};
+\draw (4,5) node {};
+\draw (5,5) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (4,4) node {};
+\draw (5,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (2,3) node {};
+\draw (3,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (2,2) node {};
+\draw (3,2) node {};
+\draw (6,2) node {};
+\draw (1,1) node {};
+\draw (4,1) node {};
+\draw (5,1) node {};
+\draw (7,1) node {};
+\draw (0,0) node {};
+\draw (2,0) node {};
+\draw (3,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\\
+% 37
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (5,7) node {};
+\draw (1,6) node {};
+\draw (3,6) node {};
+\draw (2,5) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (3,4) node {};
+\draw (4,3) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (5,2) node {};
+\draw (4,1) node {};
+\draw (6,1) node {};
+\draw (2,0) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 38
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (7,7) node {};
+\draw (4,6) node {};
+\draw (6,6) node {};
+\draw (0,5) node {};
+\draw (5,5) node {};
+\draw (4,4) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (7,2) node {};
+\draw (1,1) node {};
+\draw (3,1) node {};
+\draw (0,0) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 39
+\begin{tikzpicture}
+\draw (4,7) node {};
+\draw (6,7) node {};
+\draw (0,6) node {};
+\draw (5,6) node {};
+\draw (1,5) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (5,4) node {};
+\draw (2,3) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (6,2) node {};
+\draw (2,1) node {};
+\draw (7,1) node {};
+\draw (1,0) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 40
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (3,7) node {};
+\draw (2,6) node {};
+\draw (7,6) node {};
+\draw (4,5) node {};
+\draw (6,5) node {};
+\draw (2,4) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (3,2) node {};
+\draw (0,1) node {};
+\draw (5,1) node {};
+\draw (4,0) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+\end{tabular}
+  \end{tabular}
+\end{center}
+
+\begin{center}
+
+% 41
+\begin{tikzpicture}
+\draw (0,7) node {};
+\draw (1,6) node {};
+\draw (2,5) node {};
+\draw (3,4) node {};
+\draw (4,3) node {};
+\draw (5,2) node {};
+\draw (6,1) node {};
+\draw (7,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 42
+\begin{tikzpicture}
+\draw (5,7) node {};
+\draw (3,6) node {};
+\draw (7,5) node {};
+\draw (1,4) node {};
+\draw (6,3) node {};
+\draw (0,2) node {};
+\draw (4,1) node {};
+\draw (2,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 43
+\begin{tikzpicture}
+\draw (2,7) node {};
+\draw (4,6) node {};
+\draw (0,5) node {};
+\draw (6,4) node {};
+\draw (1,3) node {};
+\draw (7,2) node {};
+\draw (3,1) node {};
+\draw (5,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 44
+\begin{tikzpicture}
+\draw (7,7) node {};
+\draw (6,6) node {};
+\draw (5,5) node {};
+\draw (4,4) node {};
+\draw (3,3) node {};
+\draw (2,2) node {};
+\draw (1,1) node {};
+\draw (0,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 45
+\begin{tikzpicture}
+\draw (6,7) node {};
+\draw (5,6) node {};
+\draw (3,5) node {};
+\draw (0,4) node {};
+\draw (7,3) node {};
+\draw (4,2) node {};
+\draw (2,1) node {};
+\draw (1,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 46
+\begin{tikzpicture}
+\draw (4,7) node {};
+\draw (0,6) node {};
+\draw (1,5) node {};
+\draw (5,4) node {};
+\draw (2,3) node {};
+\draw (6,2) node {};
+\draw (7,1) node {};
+\draw (3,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 47
+\begin{tikzpicture}
+\draw (3,7) node {};
+\draw (7,6) node {};
+\draw (6,5) node {};
+\draw (2,4) node {};
+\draw (5,3) node {};
+\draw (1,2) node {};
+\draw (0,1) node {};
+\draw (4,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+% 48
+\begin{tikzpicture}
+\draw (1,7) node {};
+\draw (2,6) node {};
+\draw (4,5) node {};
+\draw (7,4) node {};
+\draw (0,3) node {};
+\draw (3,2) node {};
+\draw (5,1) node {};
+\draw (6,0) node {};
+\draw[shift={(-0.5,-0.5)},black!30,very thin](0,0) grid (8,8);
+\end{tikzpicture}
+%\end{tabular}
+%gap> LogTo();
+\end{center}
+\end{document}
