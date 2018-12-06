@@ -1,0 +1,232 @@
+\documentclass[12pt,a4paper]{amsart}
+
+\title{Products and Moebius Functions}
+
+\usepackage[euler-digits]{eulervm}
+\usepackage{geometry}
+
+\let\SS\relax
+\newcommand{\SS}{\mathcal{S}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Sub}{\mathsf{Sub}}
+\newcommand{\Size}[1]{\left|#1\right|}
+\newcommand{\ximes}{\tilde{*}^{\kappa}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+
+\begin{document}
+
+\maketitle
+
+\section{Closure Theorem}
+\label{sec:closure-theorem}
+
+In this section, we prove Crapo's Closure Theorem.  A closure map  
+$x \mapsto \bar{x}$ 
+on
+the poset $(X, \leq)$ is an idempotent ($\bar{\bar{x}} = \bar{x}$) poset map
+($x \leq y \implies \bar{x} \leq \bar{y}$) from the set
+$X$ to itself with
+\begin{align*}
+x \leq \bar{x}
+\end{align*}
+for all $x \in X$.  We have
+\begin{align*}
+  y \leq \bar{x} \iff \bar{y} \leq \bar{x}
+\end{align*}
+(as $\bar{y} \leq \bar{x} \implies y \leq \bar{y} \leq \bar{x}$ and
+$y \leq \bar{x} \implies \bar{y} \leq \bar{\bar{x}} = \bar{x}$).
+A closure map partitions $X$ into classes of
+elements that have the same closure. We write
+\begin{align*}
+[x] = \{y: \bar{y} = \bar{x}\}
+\end{align*}
+for the class of $x \in X$.
+
+The set of closures $\bar{X} = \{\bar{x} : x \in X\}$ is a poset with
+the partial order inherited from its embedding into $X$:
+\begin{align*}
+\zeta^{\bar{X}}(\bar{x}, \bar{y}) = \zeta^X(\bar{x}, \bar{y})
+= \zeta^X(\bar{x}, \bar{y}) \zeta^X(\bar{y}, y)
+= \zeta^X(\bar{x}, y)
+\end{align*}
+ for all $x, y \in X$.  The set of
+closure classes $\{[x] : x \in X\}$ is a poset with respect to
+$[x'] \leq [x]$ if $y' \leq y$ for some $y' \in [x']$ and some
+$y \in [x]$.  As the latter is the case if and only if
+$\bar{x}' \leq \bar{x}$, the poset $(\bar{X}, \leq)$ is isomorphic to
+the poset of closure classes.
+
+Recall: in $\mu(x, y)$ and $\zeta(x, y)$, $x$ is big and $y$ is small;
+$\zeta(x, y) = 1$ if $y \leq x$.
+
+\begin{theorem}
+Suppose that $x \mapsto \bar{x}$ is a closure map on $(X, \leq)$.  Then,
+for $x, y \in X$,
+\begin{align*}
+  \sum_{z \in [y]} \mu^X(z, x) =
+  \begin{cases}
+    \mu^{\bar{X}}(\bar{y}, \bar{x})\text, & x = \bar{x}\text, \\
+0\text, & \text{else.}
+  \end{cases}
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+  For $w \in X$, we have
+  \begin{align*}
+    \sum_{\bar{v} \in \bar{X}} \zeta^{\bar{X}}(\bar{w}, \bar{v})\, \sum_{z \in [v]} \mu^X(z, x)
+    &= \sum_{z \in X} \zeta^X(\bar{w}, z)\, \mu^X(z, x)  = \delta_{\bar{w},x}.
+  \end{align*}
+Moebius inversion now yields
+\begin{align*}
+  \sum_{z \in [y]} \mu^X(z, x)
+&= \sum_{\bar{v}} \delta_{\bar{y},\bar{v}} \sum_{z \in [v]} \mu^X(z, x) \\
+&= \sum_{\bar{v}} \sum_{\bar{w}} \mu^{\bar{X}} (\bar{y}, \bar{w})\, \zeta^{\bar{X}}(\bar{w}, \bar{v}) \sum_{z \in [v]} \mu^X(z, x) \\
+&= \sum_{\bar{w}}  \mu^{\bar{X}} (\bar{y}, \bar{w}) \sum_{\bar{v}} \zeta^{\bar{X}}(\bar{w}, \bar{v}) \sum_{z \in [v]} \mu^X(z, x) \\
+&= \sum_{\bar{w}}  \mu^{\bar{X}} (\bar{y}, \bar{w})\, \delta_{\bar{w}, x}
+=  \mu^{\bar{X}} (\bar{y}, \bar{x})\, \delta_{\bar{x}, x},
+\end{align*}
+as desired.
+\end{proof}
+
+An application of the Closure Theorem to the dual poset $(X, \geq)$
+yields the following.  Here, a coclosure map on $(X, \leq)$ is an
+idempotent poset endomorphism $x \mapsto \bar{x}$ with $\bar{x} \leq x$
+for all $x \in X$.
+\begin{theorem}
+Suppose that $x \mapsto \bar{x}$ is a coclosure map on $(X, \leq)$.  Then,
+for $x, y \in X$,
+\begin{align*}
+  \sum_{z \in [y]} \mu^X(x, z) =
+  \begin{cases}
+    \mu^{\bar{X}}(\bar{x}, \bar{y})\text, & x = \bar{x}\text, \\
+0\text, & \text{else.}
+  \end{cases}
+\end{align*}
+\end{theorem}
+
+\section{Ordinary}
+
+In the case of the ordinary Burnside ring of a finite group $G$, we
+have the following setup.  Denote $\SS = \Q \Sub(G)$, the space spanned
+by the subgroups of $G$.
+In the following, $A$, $B$  and $C$ are subgroups of $G$.
+There is a bijective linear map $\zeta \colon \SS \to \SS$, with inverse $\mu \colon S \to S$, defined as
+\begin{align*}
+  \zeta(A) &= \sum_{A'} \zeta(A, A') A' = \sum_{A' \leq A} A',\\
+  \mu(B) &= \sum_{B'} \mu(B, B'),
+\end{align*}
+where $\zeta(\mu(A)) = A = \mu(\zeta(A))$, i.e.,
+\begin{align*}
+  \zeta\biggl(\sum_C \mu(A, C) C\biggr) &= \sum_C \mu(A, C) \zeta(C) \\
+&= \sum_C \mu(A, C) \sum_B \zeta(C, B) B \\
+&= \sum_B \biggl(\sum_C \mu(A, C) \zeta(C, B) \biggr) B \\
+&= \sum_B \delta_{AB} B = A.
+\end{align*}
+
+The space $\SS$ is naturally a $\Q$-algebra, with intersection,
+linearly extended to linear combinations of subgroups, as its product.
+The map $\zeta$ is compatible with intersections, in the following sense:
+\begin{align}\tag{$*$}\label{eq:star}
+  \zeta(A \cap B, C) = \zeta(A, C) \cdot \zeta(B, C).
+\end{align}
+
+Now define a new product on $\SS$ by transporting intersection along $\zeta$:
+\begin{align*}
+  \zeta(A) \cdot \zeta(B) = \zeta(A \cap B).
+\end{align*}
+Then
+\begin{align*}
+  A \cdot B &= \zeta(\mu(A)) \cdot \zeta(\mu(B))
+\stackrel{\mathrm{def}}{=}  \zeta(\mu(A) \cap \mu(B)) \\
+&= \sum_{A',B'} \mu(A, A')\, \mu(B, B')\, \zeta(A' \cap B') \\
+&= \sum_{A',B'} \mu(A, A')\, \mu(B, B')\, \sum_C \zeta(A' \cap B', C) C \\
+%&= \sum_C \biggl(\sum_{A',B'} \mu(A, A')\, \mu(B, B')\, \zeta(A' \cap B', C) \biggr) C \\
+&\stackrel{\eqref{eq:star}}{=}  \sum_C \biggl(\sum_{A'} \mu(A, A')\,\zeta(A', C) \sum_{B'} \mu(B, B')\,\zeta(B', C)\biggr) C \\
+&=  \sum_C \delta_{AC}\, \delta_{BC}\, C = \delta_{AB} B.
+\end{align*}
+
+With the help of the Coclosure Theorem, the argument goes as follows.
+The coefficient of $C$ in the product $A \cdot B$ is
+\begin{align*}
+  a^{A,B}_C %&= \sum_{A',B'} \mu(A, A')\, \mu(B, B')\, \zeta(A' \cap B', C)\\
+&= \sum_{(A',B')} \mu^{X}((A, B), (A', B'))\, \zeta(A' \cap B', C)\text,
+\end{align*}
+where $\mu^{X}$ is the Moebius function on the poset
+$X = \Sub(G) \times \Sub(G)$  of pairs of subgroups of $G$.
+Define the $C$-coclosure of $(A', B')$ as
+\begin{align*}
+  (\bar{A}', \bar{B}') = (C', C')\text, \quad C' = A' \cap B' \cap C\text.
+\end{align*}
+(The coclosure axioms are obvious.)  Then the poset $\bar{X} = \{(C', C') : C' \leq C\}$
+is isomorphic to $\Sub(C)$. With $\zeta(A' \cap B', C) = 1 \iff (\bar{A}', \bar{B}') = (C, C)$ the Coclosure Theorem yields
+\begin{align*}
+  a^{A,B}_C = \sum_{\bar{A}' = \bar{B}' = C} \mu^{X}((A, B), (A', B'))
+=
+  \begin{cases}
+    \mu^{\bar{X}}((A, B), (C, C))\text, & A = B \leq C\text,\\
+0\text, & \text{else.}
+  \end{cases}
+\end{align*}
+But $C' < C$ implies $\mu^{\bar{X}}((C',C'), (C, C)) = \mu(C', C) = 0$.
+So $a^{A,B}_C = 0$ unless $A = B = C$ and
+\begin{align*}
+  A \cdot B = \delta_{AB} B\text.
+\end{align*}
+
+\section{Double}
+
+In the case of the double Burnside ring $B(G, G)$, something similar happens.
+Here, $\SS = \Q \Sub(G \times G)$, and the subgroups of $G \times G$ are partially ordered by $\prec = \leq_{P/K} \circ \leq_{K}$, which again gives mutually
+inverse automorphisms $\zeta$ and $\mu$ of $\SS$. The product on $\SS$
+is defined by
+\begin{align*}
+  L *^{\kappa} M = \kappa(L, M) L * M,
+\end{align*}
+where $L * M$ is the usual relation product of $L, M \leq G \times G$,
+and $\kappa(L, M) = \Size{k_2(L) \cap k_1(M)}$. Define a new product $\ximes$ on
+$\SS$ by transporting $*^{\kappa}$ along $\zeta$.
+
+The question arises, what is the analog of \eqref{eq:star}?
+\begin{align*}
+  \zeta(L * M, N) = \dots
+\end{align*}
+
+We have
+\begin{align*}
+  L \ximes M &= \zeta(\mu(L)) *^{\kappa} \zeta(\mu(M))
+\stackrel{\mathrm{def}}{=}  \zeta(\mu(L) *^{\kappa} \mu(M)) \\
+&= \sum_{L',M'} \mu(L, L')\, \mu(M, M')\, \zeta(L' *^{\kappa} M') \\
+&= \sum_{L',M'} \mu(L, L')\, \mu(M, M')\, \kappa(L', M') \sum_N \zeta(L' * M', N) N \\
+&= \sum_N \biggl(\sum_{L',M'} \mu(L, L')\, \mu(M, M')\, \kappa(L', M') \, \zeta(L' * M', N) \biggr) N \\
+&= \sum_N \biggl(\sum_{L',M'} \sum_{x \in H} [x \in \kappa(L', M')] \, \mu(L, L')\, \mu(M, M')\, \zeta(L' * M', N) \biggr) N \\
+&= \sum_N \biggl(\sum_{x \in H} \sum_{L',M'} [\kappa(L', M') \ni x] \, \mu(L, L')\, \mu(M, M')\, \zeta(L' * M', N) \biggr) N \\
+&\stackrel{\eqref{eq:star}}{=}  \sum_N \biggl(\sum_{L'} \mu(A, A') [...] \sum_{M'} \mu(M, M') [...] \biggr) N \\
+\end{align*}
+
+So the coefficient of $N$ is
+\begin{align*}
+  a^{L,M}_N = \sum_{L',M'} \mu^X((L, M), (L', M'))\,  \kappa(L', M') \, \zeta(L' * M', N)\text,
+\end{align*}
+where $\mu^X$ is the Moebius function of $X = \Sub(G \times H) \times \Sub(H \times K)$.  Define the $N$-coclosure of $(L, M) \in X$ as follows.
+Let $N_i = p_i(N)$, $i = 1,2$, and let
+\begin{align*}
+  [L, M] = \{(g, h, k) : (g, h) \in L,\, (h, k) \in M\} \in G \times H \times K\text,
+\end{align*}
+and let
+\begin{align*}
+  [L, M]_N = [L, M] \cap N_1 \times H \times N_2.
+\end{align*}
+Define
+\begin{align*}
+  \bar{L} &= \{(g,h) : (g,h,k) \in [L, M]_N\}\text,\\
+  \bar{M} &= \{(h,k) : (g,h,k) \in [L, M]_N\}\text.
+\end{align*}
+Then 
+\begin{align*}
+  (L, M) = (\bar{L}, \bar{M}) \iff
+p_1(L) \leq N_1,\, p_2(L) = p_1(M),\, p_2(M) \leq N_2
+\end{align*}
+\end{document}
