@@ -4,6 +4,8 @@
 
 \usepackage[euler-digits]{eulervm}
 \usepackage{geometry}
+\usepackage{amssymb} % \rtimes
+\usepackage{graphicx} % \scalebox
 
 \let\SS\relax
 \newcommand{\SS}{\mathcal{S}}
@@ -11,19 +13,200 @@
 \newcommand{\Sub}{\mathsf{Sub}}
 \newcommand{\Size}[1]{\left|#1\right|}
 \newcommand{\ximes}{\tilde{*}^{\kappa}}
+\renewcommand{\gcd}{\mathsf{gcd}}
+\newcommand{\lcm}{\mathsf{lcm}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\kstarhat}{\mathbin{\hat{\scalebox{0.61}{$\boxtimes$}}}}
+\newcommand{\kstartilde}{\mathbin{\tilde{\scalebox{0.61}{$\boxtimes$}}}}
 
 \begin{document}
 
 \maketitle
 
+\section{Idempotents in the Burnside Ring}
+
+[Reference: Gluck]
+
+The Burnside ring $B(G)$ has two natural basis, one in correspondence
+to the (isomorphism types of) transitive $G$-sets,
+\begin{align*}
+  u_K : H \mapsto |(G/K)^H|, \quad K, H \leq G
+\end{align*}
+(note that $u_K = u_{K'}$ iff $K$ and $K'$ are conjugate in $G$), and
+one consisting of idempotents
+\begin{align*}
+e_H \colon K \mapsto [K \sim_G H],  \quad H \leq G
+\end{align*}
+(again with
+$e_H = e_{H'}$ iff $H$ and $H'$ are conjugate in $G$).
+In order to express the $e_H$ in terms of the $u_K$,
+we first express $u_K$ in terms of the $e_H$ and then
+apply Moebius inversion.  The general principle is
+\begin{align*}
+  g(x, z) = \sum_y \zeta(x, y) f(y, z) \iff
+  f(x, z) = \sum_y \mu(x, y) g(y, z),
+\end{align*}
+where $\zeta(x, y) = [x \leq y]$ is the incidence function/matrix
+of the partial order $\leq$, and $\mu$ is the corresponding Moebius
+function, the matrix inverse of $\zeta$. Or, in the one-parameter case:
+\begin{align*}
+    g(x) = \sum_y \zeta(x, y) f(y) \iff
+  f(x) = \sum_y \mu(x, y) g(y).
+\end{align*}
+
+Now,
+\begin{align*}
+  u_K(H) &= \Size{N_G(K) : K} \cdot \# \{K^a \geq H : a \in G\} \\
+           &= \Size{N_G(H)} \Size{K}^{-1}
+             \cdot \# \{H^a \leq K : a \in G\},
+\end{align*}
+whence
+\begin{align*}
+  \Size{K} u_K = \sum_H \zeta(H, K) \Size{N_G(H)} e_H.
+\end{align*}
+Moebius inversion yields
+\begin{align*}
+  \Size{N_G(H)} e_H
+  =
+  \sum_K \mu(K, H)
+  \Size{K} u_K.
+\end{align*}
+
+\section{Lambda}
+
+Recall $(A, B) \leq_{P/K} (C, D)$ if
+$A \leq C$, $B \leq D$, and $\phi \colon Ab \mapsto Cb$ is an isomorphism
+from $A/B$ to $C/D$.
+For $A \unlhd P \leq G$, define
+\begin{align*}
+  \lambda^P_A := \sum_{(Q, B)} \mu (Q, P) \Size{B},
+\end{align*}
+where $\mu$ is the Moebius function of the poset
+$\{ (Q, B) : Q/B \cong P/A \}$, partially ordered with respect to
+$\leq_{P/K}$. Note that $\mu((Q, B), (P, A)) = \mu(Q, P)$ in the
+set of subgroups $\{Q \leq P : QA = P \}$.
+
+By Moebius inversion,
+\begin{align*}
+  \Size{B} = \sum_{(P, A)} \zeta(P, Q) \lambda^P_A,
+\end{align*}
+where $\zeta(P, A) = [(P, A) \leq_{P/K} (Q, B)]$.
+In particular, if $(P, A)$ is \emph{minimal} with respect to $\leq_{P/K}$
+(which is the case exactly when $A \leq \Phi(P)$) then
+$\lambda^P_A = \Size{A}$.
+
+Now the class incidence matrix $M$ has entries
+\begin{align*}
+  m_{(P, A), (Q, B)} = \# \{ (P, A)^a \geq (Q, B) : a \in G \}.
+\end{align*}
+We have
+\begin{align*}
+  \Size{G: N_G(Q, B)} m_{(P, A), (Q, B)} =
+  \Size{G: N_G(P, A)}  \# \{ (Q, B)^a \leq (P, A) : a \in G \},
+\end{align*}
+so that
+\begin{align*}
+  \Size{N_G(Q, B)} \Size{N_G(P, A)}^{-1} m_{(Q, B), (P, A)} =  \# \{ (P, A)^a \leq (Q, B) : a \in G \}
+\end{align*}
+Classwise:
+\begin{align*}
+  \Size{B} &= \sum_{[P, A]} \# \{ (P, A)^a \leq (Q, B) : a \in G \}\, \lambda^P_A \\
+\Size{N_G(Q, B)}^{-1} \Size{B}  &= \sum_{[P, A]} m_{(Q, B), (P, A)} \Size{N_G(P, A)}^{-1}  \lambda^P_A \\
+\Size{N_G(P, A)}^{-1}  \lambda^P_A  &= \sum_{[Q, B]} m'_{(P, A), (Q, B)} \Size{N_G(Q, B)}^{-1} \Size{B}  \\
+\end{align*}
+
+Special Case. Suppose $P$ is cyclic.  Then, for $A \leq P$,
+\begin{align*}
+  \lambda^P_A = \frac{\phi(\Size{P})}{\phi(\Size{P/A})}.
+\end{align*}
+\begin{proof}
+  Section $(Q, B)$ of a cyclic group is minimal if each prime divisor $p$ of
+  $\Size{Q}$ divides  $\Size{Q/B}$.
+  In that case, $\lambda^Q_B = \Size{B} = \phi(\Size{Q}) / \phi(\Size{Q/B})$.
+
+  In general, if $(Q, B) \leq_{P/K} (P, A)$ and $(Q, B)$ is minimal,
+  then $P = Q \times C$ and $A = B \times C$
+  for a cyclic group $C$ with $\gcd(\Size{Q}, \Size{C}) = 1$.
+  Hence
+  \begin{align*}
+    \lambda^P_A &= \sum_{(Q \times D, B \times D)} \mu(Q \times D, Q \times C) \Size{B \times D} = \Size{B} \sum_{D \leq C} \mu(D, C) \Size{D} \\
+     & = \Size{B} \phi(\Size{C}) = \phi(\Size{P}) / \phi(\Size{P/A}),
+  \end{align*}
+  as $\phi(\Size{P}) = \phi(\Size{C}) \phi(\Size{Q})$
+  and $\Size{P/A} = \Size{Q/B}$.
+\end{proof}
+
+Thus, if $A, B \leq P$,
+\begin{align*}
+  \lambda^P_A\, \lambda^P_B = \lambda^P_{A \cap B}\, \lambda^P_{AB}.
+\end{align*}
+\begin{proof}
+  Denote $a = \Size{P/A}$ and $b = \Size{P/B}$. Then
+  $\Size{P/(A\cap B)} = \lcm(a, b)$ and
+  $\Size{P/(AB)} = \gcd(a, b)$.  Hence
+  \begin{align*}
+    \lambda^P_A\, \lambda^P_B
+    &=
+    \phi(\Size{P})^2 / (\phi(a)\, \phi(b)) \\
+    &=
+    \phi(\Size{P})^2 / (\phi(\lcm(a, b))\, \phi(\gcd(a, b)))
+    = \lambda^P_{A \cap B}\, \lambda^P_{AB},
+  \end{align*}
+  as desired.
+\end{proof}
+
+Next special case: Suppose $P$ is a $Z$-group and not cyclic.
+Then the derived subgroup $P_0$ of $P$ is not trivial, and
+$\lambda^P_A = 0$ if $P_0 \leq A$.
+
+\textbf{Show:} $\lambda^P_{P_0} = 0$.  (The reason is the sheer number of
+contained conjugates of the minimal section, looking down ...)
+
+$P = A \rtimes B$.  The sections below $(P, A)$ are of the form
+$(A' \rtimes B, A')$ for $A' \leq A$, all with quotient $B$.
+
+The minimal section is $(B, 1)$
+with $\lambda^B_1 = 1$.
+
+All the top groups of these sections are self-normalizing,
+i.e., $(A':B, A')$ has $\Size{A:A'}$ conjugates.
+In particular, there are $\Size{A}$ conjugates of section $(B, 1)$.
+From $\Size{A} = \sum_{A' \leq A} \Size{A:A'} \lambda^{A':B}_{A'}$,
+it then follows that $\lambda^{A':B}_{A'} = 0$ for $A' \neq 1$.
+
+Any section $(R, C)$ bigger by $p$ (i.e. $\Size{R} = p \Size{\Phi{P_0}}$, etc.)
+contains $p$ conjugates of $(Q, B)$,
+whence
+$\Size{C} = p \Size{B} = p \lambda^Q_B + \lambda^R_C$
+implies $\lambda^R_C = 0$, and so on for any bigger sections ...
+
+Note: the Frattini subgroup is nilpotent. Hence, if $\gcd(\Size{A}, \Size{B}) = 1$ then
+$\Phi(A \rtimes B) = \Phi(A) \times \Phi'(B)$,
+where $\Phi'(B) = C_{\Phi(B)}(A)$, the part of $\Phi(B)$ that
+commutes with $A$.
+
+
+Otherwise
+\begin{align*}
+  \lambda^P_A = \frac{\phi(\Size{P})}{\phi(\Size{P/A})}.
+\end{align*}
+It follows again that
+if $A, B \leq P$,
+\begin{align*}
+  \lambda^P_A\, \lambda^P_B = \lambda^P_{A \cap B}\, \lambda^P_{AB}.
+\end{align*}
+Clearly, $P_0 \leq A$ or $P_0 \leq B$ iff $P_0 \leq AB$,
+hence $\lambda^P_A\, \lambda^P_B = 0$ iff
+$\lambda^P_{A \cap B}\, \lambda^P_{AB}$.
+
 \section{Closure Theorem}
 \label{sec:closure-theorem}
 
-In this section, we prove Crapo's Closure Theorem.  A closure map  
-$x \mapsto \bar{x}$ 
+In this section, we prove Crapo's Closure Theorem.  A closure map
+$x \mapsto \bar{x}$
 on
 the poset $(X, \leq)$ is an idempotent ($\bar{\bar{x}} = \bar{x}$) poset map
 ($x \leq y \implies \bar{x} \leq \bar{y}$) from the set
@@ -224,9 +407,113 @@ Define
   \bar{L} &= \{(g,h) : (g,h,k) \in [L, M]_N\}\text,\\
   \bar{M} &= \{(h,k) : (g,h,k) \in [L, M]_N\}\text.
 \end{align*}
-Then 
+Then
 \begin{align*}
   (L, M) = (\bar{L}, \bar{M}) \iff
 p_1(L) \leq N_1,\, p_2(L) = p_1(M),\, p_2(M) \leq N_2
 \end{align*}
+
+\section{Final Steps.}
+\label{sec:final-step}
+
+Suppose
+\begin{align*}
+  L \kstarhat M = \lambda^P_{A \cap B} (L * M)
+\end{align*}
+if $p_2(L) = p_1(M) = P$, and $0$ else.  We also assume for now that
+$\lambda^P_{A \cap B} \neq 0$, i.e., that $G$ is cyclic.
+
+For $L = \theta \colon p_1(L)/k_1(L) \to P/A$
+and $M = \psi \colon P/B \to p_2(M)/k_2(M)$, set
+\begin{align*}
+  \lambda(L, M) &= \lambda^P_{A \cap B}, &
+  \lambda(L) &= \lambda^{p_1(L)}_{k_1(L)}\text.
+\end{align*}
+We have $\lambda(M) = \lambda^P_B$ and $\lambda(L * M) = \lambda^{p_1(L)}_{k_1(L*M)}$.
+Moreover,
+\begin{align*}
+  \lambda(L) / \lambda(L * M) &= \lambda^P_A / \lambda^P_{AB} = \lambda^P_{A \cap B} / \lambda^P_B
+\end{align*}
+implies
+\begin{align*}
+  \lambda(L) \lambda(M)
+  = \lambda(L * M) \lambda(L, M).
+\end{align*}
+Note that $\lambda(L * M)$, $\lambda^P_{AB}$ and $\lambda^P_B$ in the denominators above
+must not be zero.
+(In general, if $\lambda(L) \lambda^P_{AB} = \lambda^P_A \lambda(L * M)$ then
+\begin{align*}
+  \lambda^P_A \lambda(L) \lambda(M)
+  &=   \lambda(L) \lambda^P_A \lambda^P_B \\
+  &=   \lambda(L) \lambda^P_{AB} \lambda^P_{A \cap B} \\
+  &=   \lambda^P_A \lambda(L * M) \lambda^P_{A \cap B} \\
+  &=   \lambda^P_A \lambda(L * M) \lambda(L, M),
+\end{align*}
+regardless \ldots)
+
+\textbf{Intermezzo.}  On the sections of $G$, define a product
+\begin{align*}
+  \tfrac{P_1}{A} \kstartilde \tfrac{P_2}{B} = \tfrac{P}{AB}
+\end{align*}
+if $P_1 = P_2 = P$, and $0$ else.  Set $\zeta(\tfrac{P}{A}) = \sum_{\tfrac{P}{C} \geq_P \tfrac{P}{A}} \tfrac{P}{C}$.  Then
+\begin{align*}
+  \zeta(\tfrac{P}{A} \kstartilde \tfrac{P}{B}, \tfrac{P}{C}) =   \zeta(\tfrac{P}{A}, \tfrac{P}{C}) \cdot   \zeta(\tfrac{P}{B}, \tfrac{P}{C}),
+\end{align*}
+as $\tfrac{P}{C} \geq_P \tfrac{P}{A} \kstartilde \tfrac{P}{B} \iff \tfrac{P}{C} \geq_P \tfrac{P}{A}$ and $\tfrac{P}{C} \geq_P \tfrac{P}{B}$.
+Moreover, if we define a new product $\star$ via
+\begin{align*}
+  \zeta(\tfrac{P}{A}) \star \zeta(\tfrac{P}{B}) = \zeta(\tfrac{P}{A} \kstartilde \tfrac{P}{B})\text,
+\end{align*}
+then
+\begin{align*}
+  \tfrac{P}{A} \star \tfrac{P}{B}
+  & = \zeta(\mu(\tfrac{P}{A})) \star \zeta(\mu(\tfrac{P}{B}))
+    = \zeta(\mu(\tfrac{P}{A}) \kstartilde \mu(\tfrac{P}{B})) \\
+  & = \sum_{A',B'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \mu(\tfrac{P}{B}, \tfrac{P}{B'}) \zeta(\tfrac{P}{A'} \kstartilde \tfrac{P}{B'}) \\
+  & = \sum_{A',B'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \mu(\tfrac{P}{B}, \tfrac{P}{B'}) \sum_{C} \zeta(\tfrac{P}{A'} \kstartilde \tfrac{P}{B'}, \tfrac{P}{C}) \tfrac{P}{C} \\
+  & = \sum_C \sum_{A',B'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \mu(\tfrac{P}{B}, \tfrac{P}{B'})
+    \zeta(\tfrac{P}{A'}, \tfrac{P}{C}) \zeta(\tfrac{P}{B'}, \tfrac{P}{C}) \tfrac{P}{C} \\
+  & = \sum_C \sum_{A'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \zeta(\tfrac{P}{A'}, \tfrac{P}{C})
+    \sum_{B'} \mu(\tfrac{P}{B}, \tfrac{P}{B'}) \zeta(\tfrac{P}{B'}, \tfrac{P}{C}) \tfrac{P}{C} \\
+  & = \sum_C \delta_{AC} \delta_{BC} \tfrac{P}{C} = \tfrac{P}{A} \perp \tfrac{P}{B}\text.
+\end{align*}
+End of intermezzo.
+
+Define $\tilde{L}:= \lambda(L) L$ and a new product $\star$ via transport of structure,
+\begin{align*}
+  \zeta(\tilde{L}) \star \zeta(\tilde{M}) = \zeta(\widetilde{L \kstarhat M}),
+\end{align*}
+where
+\begin{align*}
+  \zeta(\tilde{L}) = \sum_{L' \geq_P L} \widetilde{L'}\text.
+\end{align*}
+
+(Alternatively, we could first define a product $\kstartilde$ via
+\begin{align*}
+  \tilde{L} \kstartilde \tilde{M} = \widetilde{L \kstarhat M}
+\end{align*}
+which then has the property that
+\begin{align*}
+  L \kstartilde M = L * M
+\end{align*}
+if $p_2(L) = p_1(M)$ and $0$ else. Secondly, with $\zeta(L) = \sum_{L' \geq_P L} L'$, define
+\begin{align*}
+  \zeta(L) \star \zeta(M) = \zeta(L \kstartilde M),
+\end{align*}
+yielding the same structure as above.
+
+In any case, we get
+\begin{align*}
+  L \star M = \delta_{AB} L * M,
+\end{align*}
+i.e., $L \star M = L * M$ if $p_2(L) = p_1(M)$ and $k_2(L) = k_1(M)$
+(that is when the codomain of $L$ coincides with the domain of $M$:
+this is composition of isomorphisms in the category which has the
+sections of $G$ as its objects),
+and $0$ else.
+
+\begin{proof}
+  ...
+\end{proof}
+
 \end{document}
