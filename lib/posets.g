@@ -32,6 +32,7 @@ ClassIncMat:= function(G, reps, action, contains)
     mat:= [];
     for x in reps do
         orb:= Orbit(G, x, action);
+        #Print("[", Length(orb), "]\c");
         Add(mat, List(reps, lo-> Number(orb, hi-> contains(hi, lo))));
     od;
     return mat;
