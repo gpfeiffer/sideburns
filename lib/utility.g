@@ -1,5 +1,16 @@
 #############################################################################
 ##
+##  HadamardProduct
+##
+##  componentwise product of lists
+##  FIXME:  should do matrices as well
+##
+HadamardProduct:= function(arg)
+    return List(TransposedMat(arg), Product);
+end;
+
+#############################################################################
+##
 ##
 ##
 RightRegularBaseChange:= function(basis, ch)
