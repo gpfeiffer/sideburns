@@ -42,10 +42,13 @@ end;
 ##  the set of conjugacy classes  of subgroups of $G \times G$ as a basis.
 ##
 BasisDoubleBurnsideRing:= function(G)
-    local   classes,  qqq,  iii,  mats,  i,  mat,  j,  row,  sub,  k;
+    local   qqq,  classes,  reps,  GG,  iii,  mats,  i,  mat,  j,
+            row,  sub,  grp,  k;
 
     qqq:= Concatenation(List(TriplesDirectProduct(G, G), x-> Flat(x.trip)));
     classes:= ConjugacyClassesSubgroupsDirectProduct(G, G);
+    reps:= List(classes, Representative);
+    GG:= ActingDomain(classes[1]);
     iii:= [1..Length(qqq)];
 
     # mackey
@@ -55,7 +58,8 @@ BasisDoubleBurnsideRing:= function(G)
         for j in iii do
             row:= 0 * iii;  Add(mat, row);
             for sub in Collected(MackeyReps(qqq[j], qqq[i])) do
-                k:= PositionProperty(classes, c-> sub[1] in c);
+                grp:= SubgroupTriple(sub[1]);
+                k:= PositionProperty(reps, r-> IsConjugate(GG, r, grp));
                 row[k]:= row[k] + sub[2];
             od;
         od;
