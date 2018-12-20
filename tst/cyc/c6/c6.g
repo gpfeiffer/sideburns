@@ -44,27 +44,30 @@ potm:= TransposedMat(tap);
 # Burnside
 bas:= BasisDoubleBurnsideRing(G);
 
-chg:= diam * botm * isom;
+chg:= diam * botm * isom;;
 a:= RightRegularBaseChange(bas.basis, chg);;
-
-chg:= diam * botm * isom * potm;
-b:= RightRegularBaseChange(bas.basis, chg);;
 
 #  this is the number of G-conjugates of (P_1,K_1) -> U:
 #  the index of N_G(P_1, K_1) in G  x  the size of Aut_{\theta_1}(U)
 wt1:= List(sec1s, x-> Index(G, NormalizerSection(x))
            * Size(Conjugators(OneMorphismSection(x))));
 
-wt1m:= DiagonalMat(wt1/Size(G));
+wt1m:= DiagonalMat(wt1);
 
 # this is |Aut(P_1)| / |Aut(P_1/K_1)|
 wt2:= List(sec1s, x-> Size(AutomorphismGroup(TopSec(x)))
            / Size(AutomorphismGroup(AsGroup(x))));
 
-wt2m:= DiagonalMat(wt2);
+wt2m:= DiagonalMat(wt2/Size(G));
+
+chg:= diam * botm * isom * wt2m;
+b:= RightRegularBaseChange(bas.basis, chg);;
+
+chg:= diam * botm * isom * wt2m * potm;
+c:= RightRegularBaseChange(bas.basis, chg);;
 
 chg:= diam * botm * isom * wt2m * potm * wt1m;
-c:= RightRegularBaseChange(bas.basis, chg);;
+d:= RightRegularBaseChange(bas.basis, chg);;
 
 cols:= [
         1 + 4 * [0..3],
@@ -94,9 +97,9 @@ firsts:= List(cols, x-> x[1]);
 seconds:= Difference([1..Length(chg)], firsts);
 poss:= Concatenation(firsts, seconds);
 
-f:= List(c, x-> x^shrink1);
-m:= List(f, x-> x{firsts}{firsts});
-h:= List(f, x-> x{seconds}{firsts});
+f:= List(c, x-> x^shrink1);;
+m:= List(f, x-> x{firsts}{firsts});;
+h:= List(f, x-> x{seconds}{firsts});;
 
 # marks
 mmm:= List(chg, x-> Sum([1..Length(x)], i-> x[i] * m[i]));;

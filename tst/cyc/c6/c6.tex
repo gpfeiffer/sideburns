@@ -47,6 +47,70 @@
 \right)
 \end{align*}
 
+\begin{align*}
+  \begin{array}{c|c|c|c}
+    \begin{array}{r|r|r|r}
+      1&2&3&4\\\hline
+      5&6&7&8\\\hline
+      9&10&11&12\\\hline
+      13&14&15&16\\
+    \end{array}
+       &&& \\\hline
+    &
+         \begin{array}{r|r}
+           17&18\\\hline
+           19&20\\
+         \end{array}
+         && \\\hline
+       &&
+          \begin{array}{rr|rr}
+            21&22&23&24\\
+            22&21&24&23\\\hline
+            25&26&27&28\\
+            26&25&28&27\\
+          \end{array}
+         & \\\hline
+       &&&
+           \begin{array}{rr}
+             29&30\\
+             30&29\\
+           \end{array}
+    \\
+  \end{array}
+\end{align*}
+
+\begin{align*}
+  \begin{array}{c|c|c|c}
+    \begin{array}{r|r|r|r}
+      1&2&3&4\\\hline
+      5&6&7&8\\\hline
+      9&10&11&12\\\hline
+      13&14&15&16\\
+    \end{array}
+       &&& \\\hline
+    &
+         \begin{array}{r|r}
+           17&18\\\hline
+           19&20\\
+         \end{array}
+         && \\\hline
+       &&
+          \begin{array}{rr|rr}
+            21&&23&\\
+            &22&&24\\\hline
+            25&&27&\\
+            &26&&28\\
+          \end{array}
+         & \\\hline
+       &&&
+           \begin{array}{rr}
+             29&\\
+             &30\\
+           \end{array}
+    \\
+  \end{array}
+\end{align*}
+
 \tikzset{every picture/.style={scale=0.20,nodes={rectangle,fill=black!50!green,inner sep=1mm}}}
 % gap> for r in reps do
 % > Print(TikzRelationSubgroup(GG, elm, r));
