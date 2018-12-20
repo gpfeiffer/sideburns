@@ -17,8 +17,11 @@ for name in [
         "triples",
         "marks",
         "burnside",
-        "latex",
         "utility",
+        "zgroups",
+        "boucindex",
+        "difunct",
+        "latex",
         ] do
     ReadPackage(Concatenation("sideburns/lib/", name, ".g"));
 od;
