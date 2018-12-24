@@ -6,6 +6,8 @@
 \usepackage{geometry}
 \usepackage{amssymb} % \rtimes
 \usepackage{graphicx} % \scalebox
+\usepackage{mathtools} % \mathclap
+\usepackage{tikz}
 
 \let\SS\relax
 \newcommand{\SS}{\mathcal{S}}
@@ -19,6 +21,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
 
+\newcommand{\kstar}{\mathbin{\scalebox{0.61}{$\boxtimes$}}}
 \newcommand{\kstarhat}{\mathbin{\hat{\scalebox{0.61}{$\boxtimes$}}}}
 \newcommand{\kstartilde}{\mathbin{\tilde{\scalebox{0.61}{$\boxtimes$}}}}
 
@@ -413,6 +416,218 @@ Then
 p_1(L) \leq N_1,\, p_2(L) = p_1(M),\, p_2(M) \leq N_2
 \end{align*}
 
+\section{Steps.}
+\label{sec:steps}
+
+Let's try to do this step by step.  $\leq_K$ first. Set
+\begin{align*}
+  \zeta_K(L) = \sum_{L' \leq_K L} L'\text.
+\end{align*}
+There is a correspondence between the subgroups $L' \leq L$ and
+the subgroups $Q$ with $k_i(L) \leq Q \leq p_i(L)$, for each $i = 1,2$.
+So
+\begin{align*}
+  \zeta_L(L) = \sum_N \zeta_K(L, N) N\text,
+\end{align*}
+where $\zeta_K(L, N) = 0$ unless $k_i(N) = k_i(L)$, $i = 1,2$.
+In that case $N = N_Q$ corresponds to a subgroup $Q$
+of $P$, and $\zeta_K(L, N_Q) = \zeta(P, Q)$ for the $\zeta$-function
+of the subgroup lattice of $G$.
+
+Similarly, $\zeta_K(L * M, N) = 0$ unless $k_1(N) = k_1(L * M)$
+and $k_2(N) = k_2(L * M)$.  In that case, $N = N_Q$
+corresponds to a subgroup $Q$ of $p_2(L) \cap p_1(M)$ (butterfly!)
+and
+\begin{align*}
+  \zeta_K(L * M, N_Q)
+  = \zeta(p_2(L) \cap p_1(M), Q)
+  = \zeta(p_2(L), Q)\, \zeta(p_1(M), Q)
+\end{align*}
+for the $\zeta$-function of $\Sub(G)$.
+Note that also
+\begin{align*}
+  \zeta(Q, AB) = \zeta(Q, A) \zeta(Q, B)
+\end{align*}
+for subgroups $A, B \leq Q$,
+whenever $AB$ is a subgroup of $Q$,
+since $AB \leq Q \iff A \leq Q$ and $B \leq Q$.
+
+Now define a new product $\dagger$ via
+\begin{align*}
+  \zeta_K(L) \dagger \zeta_K(M) := \zeta_K(L \kstar M) = \kappa(L, M) \zeta_K(L * M)\text.
+\end{align*}
+Then, since $\kappa(L', M') = \Size{k_2(L) \cap k_1(M)} = \kappa(L, M)$ for all $L' \leq_K L$ and $M' \leq_K M$,
+\begin{align*}
+  L \dagger M &= \zeta_K(\mu_K(L)) \dagger \zeta_K(\mu_K(M))
+                = \zeta_K(\mu_K(L) \kstar \mu_K(M)) \\
+              & =  \sum_{L', M'} \mu_K(L, L') \mu_K(M, M') \kappa(L', M')  \sum_{N_Q} \zeta_K(L' * M', N_Q) N_Q \\
+              & =  \kappa(L, M) \sum_{P_2', P_1'} \zeta(P_2', K_2) \zeta(P_1', K_1) \mu(P_2, P_2') \mu(P_1, P_1') \sum_{Q} \zeta(P_2' \cap P_1', Q) N_Q \\
+              & =  \kappa(L, M) \sum_{Q}  \sum_{P_2'} \mu(P_2, P_2') \zeta(P_2', QK_2) \sum_{P_1'} \mu(P_1, P_1') \zeta(P_1', QK_1) N_Q \\
+              & =  \kappa(L, M) \sum_{\mathclap{Q K_2 = P_2,\, Q K_1 = P_1}} N_Q\text.
+\end{align*}
+Note how each subgroup $Q$ with $Q K_i = P_i$ corresponds to sections $(Q, Q \cap K_i)$ with quotient $Q/(Q \cap K_1) \cong P_i/K_i$.
+In fact, these are exactly the sections $(Q, A)$ of $G$ with $(Q, A) \leq_U (P_i, K_i)$.
+The common ones, ie. the $(Q, A)$ with $Q K_i = P_i$ for both $i = 2$ and $i = 1$ have $Q \leq P_2 \cap P_1$. (???)
+It seems that for such $Q$ to exist, one would need $K_2(P_2 \cap P_1) = P_2$
+and $K_1(P_2 \cap P_1) = P_1$ \ldots
+
+\begin{center}
+\begin{tikzpicture}
+\tikzstyle{every node} = [fill = white, minimum size = 4pt]
+
+\draw (0, 0) node (1) {$(K_2 \cap P_1) (P_2 \cap K_1)$};
+\draw (1) --++ (90:1.5cm) node (2) {$P := P_2 \cap P_1$};
+\draw (1) --++ (230:2cm) node(3) {$A := K_2 \cap P_1$};
+\draw (1) --++ (310:2cm) node (4) {$B := P_2 \cap K_1$};
+\draw (3) --++ (150:2cm) node (5) {$K_2$};
+\draw (4) --++ (30:2cm) node (6) {$K_1$};
+\draw (1) --++ (30:2cm) node (7) {$K_1'$};
+\draw (1) --++ (150:2cm) node (8) {$K_2'$};
+\draw (7) --++ (90:1.5cm) node (9) {$P_1' = P_1$};
+\draw (8) --++ (90:1.5cm) node (10) {$P_2' = P_2$};
+% \draw (10) --++ (90:1cm) node (11) {$P_2$};
+% \draw (9) --++ (90:1cm) node (12) {$P_1$};
+\draw (3) --++ (315:2cm) node (0) {$K_2 \cap K_1$};
+
+\draw (9) --++ (2);
+\draw (10) --++ (2);
+\draw (5) --++ (8);
+\draw (6) --++ (7);
+\draw (4) --++ (0);
+\end{tikzpicture}
+\end{center}
+
+In that case, $\tfrac{P}{A} \leq_U \tfrac{P_2}{K_2}$
+and $\tfrac{P}{B} \leq_U \tfrac{P_1}{K_1}$.  Moreover, for every $Q \leq P$ that gives rise
+to a subgroup $N_Q$ in $L \dagger M$, we have
+$\tfrac{Q}{Q \cap A} \leq_U \tfrac{P}{A}$ and
+$\tfrac{Q}{Q \cap B} \leq_U \tfrac{P}{B}$.  For $Q \leq P_2$ with $\tfrac{Q}{Q \cap A} \leq_U \tfrac{P_2}{K_2}$, define
+\begin{align*}
+  L_Q = \tfrac{P_1}{K_1} \to \tfrac{P_2}{K_2} \to \tfrac{Q}{Q \cap A}\text,
+\end{align*}
+the composition of the isomorphism $L$ with the inverse of the inclusion $Q \to P_2$.
+Similarly, for $Q \leq P_3$ with $\tfrac{Q}{Q \cap B} \leq_U \tfrac{P_3}{K_3}$, define
+\begin{align*}
+  {}_QM = \tfrac{Q}{Q \cap B} \to \tfrac{P_3}{K_3} \to \tfrac{P_4}{K_4}\text,
+\end{align*}
+the composition of the inclusion $Q \to P_3$ with $M$.  Then, for each common $Q$, $N_Q = L_Q * {}_QM$.
+Note that in this case $p_2(L_Q) = p_1({}_QM)$.  Therefore,
+\begin{align*}
+  L \dagger M = \kappa(L, M) \sum_{L',M'} L' \mathbin{\dot{*}} M'\text,
+\end{align*}
+where
+\begin{align*}
+  L \mathbin{\dot{*}} M = L * M\text{, if } p_2(L) = p_1(M)\text{, and } 0 \text{ else,}
+\end{align*}
+and the sum runs over all $L' \leq_U^2 L$ and all $M' \leq_U^1 M$.
+
+
+
+\section{Next Step.}
+\label{sec:next-step}
+
+Now define
+\begin{align*}
+  \zeta_U(L) := \sum_{L' \leq_U L} L'.
+\end{align*}
+This one lives independently on the left and on the right sections of $L$:
+if $L' \leq_U L$ then $(p_i(L'), k_i(L')) \leq_U (p_i(L), k_i(L))$ for $i = 1, 2$:
+\begin{align*}
+  L' = L'(\tfrac{P_1'}{K_1'}, \tfrac{P_2'}{K_2'}) \implies
+  \mu_U(L, L') = \mu_U(\tfrac{P_1}{K_1}, \tfrac{P_1'}{K_1'}) \mu_U(\tfrac{P_2}{K_2}, \tfrac{P_2'}{K_2'})\text.
+\end{align*}
+
+We have
+\begin{align*}
+  \zeta_U(L \dagger M) = \kappa(L, M)\, \zeta_U(L) \mathbin{\dot{*}} \zeta_U(M)\text.
+\end{align*}
+\begin{proof}
+  Splitting $\leq_U$ into $\leq_U^1$ and $\leq_U^2$,
+  \begin{align*}
+    \zeta_U(L) = \sum_{L' \leq_U L} L'
+    = \sum_{\tfrac{P_1'}{K_1'} \leq_U \tfrac{P_1}{K_1}}
+    \sum_{\tfrac{P_2'}{K_2'} \leq_U \tfrac{P_2}{K_2}}
+    {}_{P_1'}L_{P_2'}.
+  \end{align*}
+  Thus
+  \begin{align*}
+    \zeta_U(L) \mathbin{\dot{*}} \zeta_U(M) &=
+    \Bigl(\sum_{\tfrac{P_1'}{K_1'} \leq_U \tfrac{P_1}{K_1}}
+    \sum_{\tfrac{P_2'}{K_2'} \leq_U \tfrac{P_2}{K_2}}
+    {}_{P_1'}L_{P_2'}\Bigr)
+    \mathbin{\dot{*}}
+        \Bigl(\sum_{\tfrac{P_3'}{K_3'} \leq_U \tfrac{P_3}{K_3}}
+    \sum_{\tfrac{P_4'}{K_4'} \leq_U \tfrac{P_4}{K_4}}
+    {}_{P_3'}M_{P_4'}\Bigr) \\
+&=
+    \sum_{\tfrac{P_1'}{K_1'} \leq_U \tfrac{P_1}{K_1}}
+    \sum_{\tfrac{P_4'}{K_4'} \leq_U \tfrac{P_4}{K_4}}
+    \Bigl(\sum_{\tfrac{P_2'}{K_2'} \leq_U \tfrac{P_2}{K_2}}
+    {}_{P_1'}L_{P_2'}
+    \mathbin{\dot{*}}
+        \sum_{\tfrac{P_3'}{K_3'} \leq_U \tfrac{P_3}{K_3}}
+    {}_{P_3'}M_{P_4'}\Bigr) \\
+&=
+    \kappa(L, M)^{-1}
+    \sum_{\tfrac{P_1'}{K_1'} \leq_U \tfrac{P_1}{K_1}}
+    \sum_{\tfrac{P_4'}{K_4'} \leq_U \tfrac{P_4}{K_4}}
+    {}_{P_1'}(L \dagger
+    M)_{P_4'} \\
+&=
+    \kappa(L, M)^{-1}
+    \zeta_U(L \dagger    M)\text,
+  \end{align*}
+  as desired.
+\end{proof}
+
+
+Define another product $\kstarhat$ via
+\begin{align*}
+  \zeta_U(L) \kstarhat \zeta_U(M) := \zeta_U(L \dagger M)
+  = \kappa(L, M)\, \zeta_U(L) \mathbin{\dot{*}} \zeta_U(M)\text.
+\end{align*}
+Then
+\begin{align*}
+  L \kstarhat M
+  &= \zeta_U(\mu_U(L)) \kstarhat \zeta_U(\mu_U(M))
+    \stackrel{\text{def}}{=} \zeta_U(\mu_U(L) \dagger \mu_U(M)) \\
+  &= \sum_{L',M'} \mu_U(L, L') \mu_U(M, M') \zeta_U(L' \dagger M') \\
+  &= \sum_{L',M'} \mu_U(L, L') \mu_U(M, M') \kappa(L', M') \zeta_U(L') \mathbin{\dot{*}} \zeta_U(M') \\
+  &= \sum_{\tfrac{P_i'}{K_i'}}
+    \prod_{i=1}^4 \mu_U(\tfrac{P_i}{K_i}, \tfrac{P_i'}{K_i'})
+    \kappa({}_{P_1'}L_{P_2'}, {}_{P_3'}M_{P_4'})
+    \sum_{\tfrac{P_i''}{K_i''}}
+    \prod_{i=1}^4 \zeta_U(\tfrac{P_i'}{K_i'}, \tfrac{P_i''}{K_i''})
+    {}_{P_1''}L_{P_2''} \mathbin{\dot{*}} {}_{P_3''}M_{P_4''}
+    \\
+  &= \sum_{\tfrac{P_i'}{K_i'}}
+    \prod_{i=2}^3 \mu_U(\tfrac{P_i}{K_i}, \tfrac{P_i'}{K_i'})
+    \Size{K_2' \cap K_3'}
+    \sum_{\tfrac{P_2''}{K_2''}}
+    \sum_{\tfrac{P_3''}{K_3''}}
+    \prod_{i=2}^3 \zeta_U(\tfrac{P_i'}{K_i'}, \tfrac{P_i''}{K_i''})
+    {}_{P_1}L_{P_2''} \mathbin{\dot{*}} {}_{P_3''}M_{P_4}
+    \\
+  &= \sum_{\tfrac{P_i'}{K_i'}}
+    \prod_{i=2}^3 \mu(P_i, P_i')
+    \Size{(A \cap B) \cap (P_2' \cap P_3')}
+    \sum_{Q} \zeta(P_2' \cap P_3', Q)
+    L_{Q} \mathbin{\dot{*}} {}_{Q}M
+    \\
+  &= \sum_{Q}
+    \sum_{\tfrac{P_2'}{K_2'}}
+    \mu_U(\tfrac{P_2}{K_2}, \tfrac{P_2'}{K_2'})
+    \zeta_U(\tfrac{P_2'}{K_2'}, \tfrac{Q}{K_2''})
+    \sum_{\tfrac{P_3'}{K_3'}}
+    \mu_U(\tfrac{P_3}{K_3}, \tfrac{P_3'}{K_3'})
+    \zeta_U(\tfrac{P_3'}{K_3'}, \tfrac{Q}{K_3''})
+    \kappa(L_Q, {}_QM)
+    L_{Q} \mathbin{\dot{*}} {}_{Q}M
+    \\
+  &= ... \\
+  &= \sum_Q \mu(P, Q) \kappa(L_Q, {}_QM) L_Q \mathbin{\dot{*}} {}_QM
+\end{align*}
+
 \section{Final Steps.}
 \label{sec:final-step}
 
@@ -513,7 +728,29 @@ sections of $G$ as its objects),
 and $0$ else.
 
 \begin{proof}
-  ...
+  The poset $\{ L' : L' \geq_P L \}$ is isomorphic to the poset $\{A' : P \unrhd A' \unrhd A \}$,
+  that is $\zeta(L, L') = \zeta(\tfrac{P}{A}, \tfrac{P}{A'})$, where $A'= k_2(L')$.
+  Similarly, $\{ M' : M' \geq_P M \}$ is isomorphic to
+  $\{B' : P \unrhd B' \unrhd B \}$, with $\zeta(M, M') = \zeta(\tfrac{P}{B}, \tfrac{P}{B'})$, where $B'= k_1(M')$.
+  Moreover,
+  \begin{align*}
+    \zeta(L \kstartilde M, N) = \zeta(\tfrac{P}{A} \kstartilde \tfrac{P}{B}, \tfrac{P}{C}) = \zeta(\tfrac{P}{A}, \tfrac{P}{C}) \cdot   \zeta(\tfrac{P}{B}, \tfrac{P}{C}),
+  \end{align*}
+  where $N$ is the unique group with $N \geq_P L \kstartilde M$ that factors through $\tfrac{P}{C}$, for $P \unrhd C \unrhd AB$.
+  It follows that
+  \begin{align*}
+    L \star M &= \zeta(\mu(L)) \star \zeta(\mu(M))
+= \zeta(\mu(L) \kstartilde \mu(M)) \\
+  & = \sum_{L',M'} \mu(L, L') \mu(M, M') \zeta(L' \kstartilde M') \\
+  & = \sum_{L',M'} \mu(L, L') \mu(M, M') \sum_{N} \zeta(L' \kstartilde M', N) N \\
+  & = \sum_{A',B'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \mu(\tfrac{P}{B}, \tfrac{P}{B'})
+    \sum_C \zeta(\tfrac{P}{A'} \kstartilde \tfrac{P}{B'}, \tfrac{P}{C}) N \\
+  % & = \sum_C \sum_{A',B'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \mu(\tfrac{P}{B}, \tfrac{P}{B'})
+  %  \zeta(\tfrac{P}{A'}, \tfrac{P}{C}) \zeta(\tfrac{P}{B'}, \tfrac{P}{C}) N \\
+  & = \sum_C \sum_{A'} \mu(\tfrac{P}{A}, \tfrac{P}{A'}) \zeta(\tfrac{P}{A'}, \tfrac{P}{C})
+    \sum_{B'} \mu(\tfrac{P}{B}, \tfrac{P}{B'}) \zeta(\tfrac{P}{B'}, \tfrac{P}{C}) N \\
+    & = \sum_C \delta_{AC} \delta_{BC} N = \delta_{AB} L * M\text.
+  \end{align*}
 \end{proof}
 
 \end{document}
