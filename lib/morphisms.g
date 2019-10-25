@@ -68,7 +68,7 @@ InstallMethod(Automizer, "for a morphism", [IsMorphism], function(mor)
 
     sec:= mor!.section;
     P:= TopSec(sec);
-    map:= NaturalHomomorphism(sec) * mor!.theta;
+    map:= NarrowHomomorphism(sec) * mor!.theta;
     map1:= InverseGeneralMapping(map);
     auto:= Automizer(sec);
     inv:= InverseHomomorphism(auto);

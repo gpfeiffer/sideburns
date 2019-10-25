@@ -107,7 +107,7 @@ end);
 DeclareOperation("Mapping", [IsTriple]);
 
 InstallMethod(Mapping, "for a triple", [IsTriple], function(gt)
-    return NaturalHomomorphism(gt!.source) * gt!.map
+    return NarrowHomomorphism(gt!.source) * gt!.map
            * InverseHomomorphism(gt!.target);
 end);
 
@@ -160,10 +160,10 @@ InstallOtherMethod(\^, "for triples", true, [IsTriple, IsMultiplicativeElementWi
     # P1^c1/K1^c1 -> P1^c1 -> P1 -> P1/K1 -> P2/K2 -> P2 -> P2^c2 -> P2^c2/K2^c2
     gens:= GeneratorsOfGroup(AsGroup(s[1]));
     map:= InverseHomomorphism(s[1]) * c[1]^-1
-          * NaturalHomomorphism(sec[1]) * Map(gt);
+          * NarrowHomomorphism(sec[1]) * Map(gt);
     imgs:= List(gens, x-> x^map);
     map:= InverseHomomorphism(sec[2]) * c[2]
-          * NaturalHomomorphism(s[2]);
+          * NarrowHomomorphism(s[2]);
     imgs:= List(imgs, x-> x^map);
     map:= GroupHomomorphismByImages(AsGroup(s[1]), AsGroup(s[2]), gens, imgs);
 
@@ -192,8 +192,8 @@ InstallMethod(SubgroupTriple, "for triples", [IsTriple], function(gt)
 
     p1:= Projection(GH, 1);
     p2:= Projection(GH, 2);
-    hom1:= NaturalHomomorphism(sec[1]);
-    hom2:= NaturalHomomorphism(sec[2]);
+    hom1:= NarrowHomomorphism(sec[1]);
+    hom2:= NarrowHomomorphism(sec[2]);
     prop:= gh-> ((gh^p1)^hom1)^Map(gt) = (gh^p2)^hom2;
 
     return SubgroupProperty(PP, prop, KK);
@@ -285,7 +285,7 @@ TripleSubgroup:= function(GH, L)
         K:= Image(p, Intersection(Image(e), L));
         sections[i]:= Section(Image(p), P, K);
         list[i]:= List(GeneratorsOfGroup(L), ab ->
-                       (ab^p)^NaturalHomomorphism(sections[i]));
+                       (ab^p)^NarrowHomomorphism(sections[i]));
     od;
     map:= GroupHomomorphismByImages(AsGroup(sections[1]), AsGroup(sections[2]),
                     list[1], list[2]);
@@ -461,7 +461,7 @@ ConstrictedTriple:= function(gt, sec)
     K:= Image(mapping, BotSec(sec));
     target:= Section(gt!.target!.G, P, K);
     inv:= InverseHomomorphism(sec);
-    nat:= NaturalHomomorphism(target);
+    nat:= NarrowHomomorphism(target);
     gens:= GeneratorsOfGroup(AsGroup(sec));
     imgs:= List(gens, x-> Representative(Images(mapping, Images(inv, x)))^nat);
     map:= GroupHomomorphismByImages(AsGroup(sec), AsGroup(target), gens, imgs);

@@ -111,7 +111,7 @@ end);
 ##  Normalizer and homomorphism
 ##
 #A  HomomorphismSection( section )
-#A  NaturalHomomorphism( section )
+#A  NarrowHomomorphism( section )
 #A  InverseHomomorphism( section )
 ##
 ##  returns the natural homomorphism $\alpha: N_G(K) \to N_G(K)/K$,
@@ -128,9 +128,9 @@ end);
 
 ##  its restriction to P ...
 ##
-DeclareAttribute("NaturalHomomorphism", IsSection);
+DeclareAttribute("NarrowHomomorphism", IsSection);
 
-InstallMethod(NaturalHomomorphism, "for a section", [IsSection], function(sec)
+InstallMethod(NarrowHomomorphism, "for a section", [IsSection], function(sec)
     local   phi,  P,  gens;
 
     #    return RestrictedMapping(HomomorphismSection(sec), sec!.P);
@@ -146,7 +146,7 @@ end);
 DeclareAttribute("InverseHomomorphism", IsSection);
 
 InstallMethod(InverseHomomorphism, "for a section", [IsSection], function(sec)
-    return InverseGeneralMapping(NaturalHomomorphism(sec));
+    return InverseGeneralMapping(NarrowHomomorphism(sec));
 end);
 
 ##############################################################################
@@ -202,7 +202,7 @@ end);
 DeclareAttribute("AsGroup", IsSection);
 
 InstallMethod(AsGroup, "for a section", [IsSection], function(sec)
-    return Image(NaturalHomomorphism(sec));
+    return Image(NarrowHomomorphism(sec));
 end);
 
 
