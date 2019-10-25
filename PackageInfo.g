@@ -8,8 +8,8 @@ SetPackageInfo( rec(
 
 PackageName := "sideBurns",
 Subtitle := "Double Burnside Rings and Subgroups of Direct Products",
-Version := "0.0.1",
-Date := "26/03/2016",
+Version := "0.0.2",
+Date := "25/10/2019",
 
 Persons := [
   rec(
@@ -25,10 +25,16 @@ Persons := [
                      "Galway, Ireland" ] ),
     Place         := "Galway",
     Institution   := "NUI Galway"
-     ),
+  ),
 ],
 
-PackageWWWHome := "http://schmidt.nuigalway.ie/sideburns",
+Status:= "dev",
+PackageWWWHome := "https://github.com/gpfeiffer/sideburns",
+ArchiveURL := Concatenation( ~.PackageWWWHome, "archive/v", ~.Version),
+ArchiveFormats:= ".tar.gz",
+README_URL := Concatenation( ~.PackageWWWHome, "README.md" ),
+PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+AbstractHTML:= "<span class='pkgname'>sideBurns</span> provides functionality for computations with Double Burnside Rings.",
 
 PackageDoc := rec(
   BookName := "sideburns",
